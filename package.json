@@ -1,0 +1,29 @@
+{
+  "name": "trust-engine-landing-page",
+  "version": "1.0.0",
+  "description": "Trust Engine - Landing page for VC portfolio distribution service",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.14"
+  },
+  "keywords": [
+    "landing page",
+    "VC",
+    "operator network",
+    "distribution"
+  ],
+  "author": "Trust Engine",
+  "license": "MIT",
+  "dependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-icons": "^5.6.0",
+    "react-router-dom": "^7.15.1"
+  }
+}
