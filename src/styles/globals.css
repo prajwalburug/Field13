@@ -484,7 +484,7 @@ footer {
   .problem-item:last-child { border-bottom: none; }
   .problem-item:nth-child(2) { padding-left: 0; }
   .how-step { grid-template-columns: 40px 1fr; }
-  .how-step-body { grid-column: 2; }
+  .how-step > div:last-child { grid-column: 1 / -1; padding-left: 40px; }
   .how-step-title { font-size: 18px; }
   .diff-header { grid-template-columns: 1fr; gap: 1.5rem; }
   .diff-row { grid-template-columns: 1fr 1fr 1fr; font-size: 12px; }
