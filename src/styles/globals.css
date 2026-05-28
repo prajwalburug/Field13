@@ -488,13 +488,13 @@ footer {
   .how-step > div:last-child { grid-column: 1 / -1; padding-left: 40px; }
   .how-step-title { font-size: 18px; }
   .diff-header { grid-template-columns: 1fr; gap: 1.5rem; }
-  .diff-row { grid-template-columns: 1fr; }
-  .diff-cell { padding: 0.35rem 0; border-left: none; }
+  .diff-row { grid-template-columns: 1fr 1fr; }
+  .diff-cell { padding: 0.5rem 0; border-left: none; }
   .diff-cell:not(:first-child) { padding-left: 0; border-left: none; }
-  .diff-cell.label { padding-top: 0.75rem; font-size: 12px; color: var(--ink-2); }
+  .diff-cell.label { grid-column: 1 / -1; padding-top: 0.75rem; padding-bottom: 0.25rem; font-size: 12px; color: var(--ink-2); }
   .diff-cell.them { color: var(--ink-3); }
   .diff-cell.us { color: var(--accent); }
-  .diff-row.header { display: none; }
+  .diff-row.header .diff-cell:first-child { display: none; }
   .who-grid { grid-template-columns: 1fr; }
   .operator-teaser { flex-direction: column; }
   .btn-primary, .btn-secondary, .nav-cta, .btn-light { min-height: 44px; display: inline-flex; align-items: center; }
