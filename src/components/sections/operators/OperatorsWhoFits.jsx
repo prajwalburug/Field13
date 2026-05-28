@@ -10,7 +10,7 @@ const OperatorsWhoFits = () => {
               not creators chasing deals.
             </h2>
             <p className="who-split-body">
-              We don't care about follower counts. We care whether your audience trusts your judgment about the tools you use.
+              Follower counts don't matter. Trust does.
             </p>
             <ul className="checklist">
               <li>GTM, RevOps, sales, growth, devtools, or related B2B discipline</li>
