@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>field13 Command Center — Design Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital@0;1&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #EDE9E1;
+      font-family: 'DM Mono', 'Courier New', monospace;
+      padding: 24px;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Tab bar */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .tab {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #7A7A7A;
+      cursor: pointer;
+    }
+    .tab.active {
+      border-color: rgba(14,14,14,0.16);
+      background: #F4F1EB;
+      color: #0E0E0E;
+    }
+
+    /* Cards */
+    .card {
+      background: #F4F1EB;
+      border: 1px solid rgba(14,14,14,0.09);
+      border-radius: 6px;
+      padding: 12px 16px;
+    }
+    .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: #B8935A;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    h1, h2 { font-family: 'Instrument Serif', Georgia, serif; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: #1A4A3A;
+      border-radius: 6px;
+      min-height: 140px;
+      overflow: hidden;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #FAF8F4;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: #1A4A3A;
+      pointer-events: none;
+    }
+    /* pixel-art simulation with CSS */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.02) 5%, rgba(255,255,255,0.02) 6%, transparent 6%),
+        linear-gradient(0deg, transparent 10%, rgba(255,255,255,0.025) 10%, rgba(255,255,255,0.025) 11%, transparent 11%),
+        radial-gradient(circle at 20% 40%, rgba(184,147,90,0.15) 0%, transparent 30%),
+        radial-gradient(circle at 80% 60%, rgba(184,147,90,0.1) 0%, transparent 25%);
+    }
+    .hero-content { position: relative; z-index: 10; }
+    .hero h1 { font-size: 20px; font-style: italic; }
+    .hero p { font-size: 12px; opacity: 0.8; margin-top: 4px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+    }
+
+    /* Grid layouts */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+    .flex-wrap { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* Metric */
+    .metric-value { font-family: 'Instrument Serif', serif; font-size: 24px; color: #1A4A3A; }
+    .metric-label { font-size: 11px; color: #3A3A3A; }
+
+    /* Button styles */
+    .skill-btn {
+      padding: 6px 12px; border-radius: 3px; font-family: 'DM Mono', monospace; font-size: 12px;
+      border: none; cursor: pointer; background: #1A4A3A; color: #FAF8F4;
+    }
+    .skill-btn-outline {
+      padding: 6px 12px; border-radius: 3px; font-family: 'DM Mono', monospace; font-size: 12px;
+      background: transparent; border: 1px solid rgba(14,14,14,0.16); color: #3A3A3A; cursor: pointer;
+    }
+    .pill {
+      padding: 4px 10px; border-radius: 20px; font-size: 11px;
+      border: 1px solid rgba(14,14,14,0.16); background: transparent; color: #3A3A3A; cursor: pointer;
+    }
+    .pill.active {
+      background: #1A4A3A; border-color: #1A4A3A; color: #FAF8F4;
+    }
+
+    .divider { border-bottom: 1px solid rgba(14,14,14,0.09); padding: 4px 0; font-size: 12px; color: #3A3A3A; }
+
+    .row-space { display: flex; justify-content: space-between; align-items: center; }
+    .gap-6 { gap: 6px; }
+
+    /* Search input */
+    .search {
+      width: 100%; padding: 8px 12px; border-radius: 3px; border: 1px solid rgba(14,14,14,0.16);
+      font-family: 'DM Mono', monospace; font-size: 12px; background: #FAF8F4; color: #0E0E0E; outline: none;
+    }
+    .search:focus { border-color: #1A4A3A; }
+
+    .mt-6 { margin-top: 6px; }
+    .mt-8 { margin-top: 8px; }
+    .mb-8 { margin-bottom: 8px; }
+
+    /* Stage indicators */
+    .stage-discovery { color: #B8935A; }
+    .stage-active { color: #1A4A3A; }
+    .stage-proposal { color: #3A3A3A; }
+    .stage-negotiation { color: #0E0E0E; }
+
+    .tag { background: #EDE9E1; padding: 1px 6px; border-radius: 2px; font-size: 10px; }
+
+    .op-6 { opacity: 0.6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab active">✦ Command Center</button>
+      <button class="tab">News & Signals</button>
+      <button class="tab">Intelligence</button>
+    </div>
+
+    <!-- HERO BANNER -->
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1>Good morning, Collab13</h1>
+        <p>Thursday, May 28, 2026 · 09:41 AM</p>
+      </div>
+      <div class="hero-content" style="text-align:right">
+        <span class="hero-badge">● All systems nominal</span>
+      </div>
+    </div>
+
+    <!-- ROW 1: Scorecard, Calendar, Action Queue -->
+    <div class="grid-3">
+      <!-- SCORECARD -->
+      <div class="card">
+        <div class="row-space mb-8">
+          <span class="label">—— SCORECARD</span>
+          <span style="color:#7A7A7A;font-size:11px;cursor:pointer">↻</span>
+        </div>
+        <div class="grid-2" style="gap:12px">
+          <div><div class="metric-value">12</div><div class="metric-label">Clients</div></div>
+          <div><div class="metric-value">8</div><div class="metric-label">Operators</div></div>
+          <div><div class="metric-value">$48K</div><div class="metric-label">Revenue</div></div>
+          <div><div class="metric-value">6</div><div class="metric-label">Programs</div></div>
+        </div>
+      </div>
+
+      <!-- CALENDAR -->
+      <div class="card">
+        <div class="row-space mb-8">
+          <span class="label">—— TODAY'S CALENDAR</span>
+          <span style="color:#7A7A7A;font-size:11px;cursor:pointer">↻</span>
+        </div>
+        <div class="divider">10:00 · Weekly standup</div>
+        <div class="divider">13:30 · Client review — Acme</div>
+        <div class="divider">15:00 · Ops sync</div>
+      </div>
+
+      <!-- ACTION QUEUE -->
+      <div class="card">
+        <div class="row-space mb-8">
+          <span class="label">—— ACTION QUEUE</span>
+          <span style="color:#7A7A7A;font-size:11px;cursor:pointer">↻</span>
+        </div>
+        <div class="row-space divider">
+          <span>Review proposal draft</span>
+          <div class="flex-wrap" style="gap:8px">
+            <span style="color:#1A4A3A;cursor:pointer">✓</span>
+            <span style="color:#7A7A7A;cursor:pointer">✕</span>
+          </div>
+        </div>
+        <div class="row-space divider">
+          <span>Update pipeline tracker</span>
+          <div class="flex-wrap" style="gap:8px">
+            <span style="color:#1A4A3A;cursor:pointer">✓</span>
+            <span style="color:#7A7A7A;cursor:pointer">✕</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: Engagements, Operators, Pipeline -->
+    <div class="grid-3">
+      <!-- ENGAGEMENTS -->
+      <div class="card">
+        <div class="row-space mb-8">
+          <span class="label">—— ENGAGEMENTS</span>
+          <span style="color:#7A7A7A;font-size:11px;cursor:pointer">↻</span>
+        </div>
+        <div class="row-space" style="font-size:12px;color:#3A3A3A;padding:4px 0">
+          <span>Acme Corp</span>
+          <span class="stage-active">● active</span>
+        </div>
+        <div class="row-space" style="font-size:12px;color:#3A3A3A;padding:4px 0">
+          <span>Nexus Inc</span>
+          <span class="stage-discovery">● discovery</span>
+        </div>
+        <div class="row-space" style="font-size:12px;color:#3A3A3A;padding:4px 0">
+          <span>OmniFlow</span>
+          <span class="stage-proposal">● proposal</span>
+        </div>
+      </div>
+
+      <!-- OPERATORS -->
+      <div class="card">
+        <div class="row-space mb-8">
+          <span class="label">—— OPERATORS</span>
+          <span style="color:#7A7A7A;font-size:11px;cursor:pointer">↻</span>
+        </div>
+        <div class="row-space" style="font-size:12px;color:#3A3A3A;padding:4px 0">
+          <span>DataSift</span>
+          <span style="color:#7A7A7A">data pipeline</span>
+        </div>
+        <div class="row-space" style="font-size:12px;color:#3A3A3A;padding:4px 0">
+          <span>NewsScout</span>
+          <span style="color:#7A7A7A">monitoring</span>
+        </div>
+        <div class="row-space" style="font-size:12px;color:#3A3A3A;padding:4px 0">
+          <span>BriefForge</span>
+          <span style="color:#7A7A7A">reporting</span>
+        </div>
+      </div>
+
+      <!-- PIPELINE -->
+      <div class="card">
+        <div class="row-space mb-8">
+          <span class="label">—— PIPELINE</span>
+          <span style="color:#7A7A7A;font-size:11px;cursor:pointer">↻</span>
+        </div>
+        <div class="flex-wrap" style="font-size:12px;color:#3A3A3A">
+          <span style="background:#EDE9E1;padding:4px 8px;border-radius:3px">Titan · discovery</span>
+          <span style="background:#EDE9E1;padding:4px 8px;border-radius:3px">Apex · negotiation</span>
+          <span style="background:#EDE9E1;padding:4px 8px;border-radius:3px">Core · proposal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS TILES -->
+    <div class="card">
+      <span class="label">—— SKILLS</span>
+      <div class="flex-wrap" style="margin-top:8px">
+        <button class="skill-btn">📋 /daily-brief</button>
+        <button class="skill-btn">👤 /client-brief</button>
+        <button class="skill-btn">📊 /status-update</button>
+        <button class="skill-btn">📅 /weekly-brief</button>
+        <button class="skill-btn-outline">+ Add</button>
+      </div>
+    </div>
+
+    <!-- ===== SECTION DIVIDER ===== -->
+    <hr style="border:none;border-top:1px solid rgba(14,14,14,0.09);margin:8px 0" />
+
+    <!-- NEWS & SIGNALS TAB (shown for completeness) -->
+    <div class="card">
+      <div class="row-space mb-8">
+        <span class="label">—— NEWS SIGNALS</span>
+        <span style="color:#7A7A7A;font-size:11px;cursor:pointer">↻</span>
+      </div>
+      <input class="search" placeholder="Search news..." value="AI" />
+      <div class="flex-wrap" style="margin-top:8px;margin-bottom:12px">
+        <button class="pill">All</button>
+        <button class="pill active">AI</button>
+        <button class="pill">Pipeline</button>
+        <button class="pill">Competitors</button>
+        <button class="pill">Funding</button>
+        <div style="flex:1"></div>
+        <span style="font-size:11px;color:#3A3A3A;padding:2px 8px;border:1px solid rgba(14,14,14,0.16);border-radius:3px;cursor:pointer">☰ List</span>
+      </div>
+      <div class="grid-auto">
+        <div class="card" style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <div>
+            <div style="font-family:'Instrument Serif',serif;font-size:14px;color:#0E0E0E">Claude 4.5 achieves new benchmark</div>
+            <div class="flex-wrap" style="margin-top:6px;font-size:10px;color:#7A7A7A;align-items:center">
+              <span class="tag">AI</span>
+              <span>TechCrunch</span>
+              <span style="color:#1A4A3A">↑</span>
+            </div>
+          </div>
+          <span style="color:#B8935A;cursor:pointer">★</span>
+        </div>
+        <div class="card" style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <div>
+            <div style="font-family:'Instrument Serif',serif;font-size:14px;color:#0E0E0E">New R1 reasoning model from DeepSeek</div>
+            <div class="flex-wrap" style="margin-top:6px;font-size:10px;color:#7A7A7A;align-items:center">
+              <span class="tag">AI</span>
+              <span>VentureBeat</span>
+              <span style="color:#1A4A3A">↑</span>
+            </div>
+          </div>
+          <span style="color:#7A7A7A;cursor:pointer">☆</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTELLIGENCE TAB -->
+    <div class="card">
+      <div class="row-space mb-8">
+        <span class="label">—— MEETING INTELLIGENCE</span>
+        <span style="color:#7A7A7A;font-size:11px;cursor:pointer">↻</span>
+      </div>
+      <div class="card" style="cursor:pointer;border:1px solid #1A4A3A">
+        <div class="row-space" style="font-size:12px;color:#3A3A3A">
+          <span style="font-family:'Instrument Serif',serif;font-size:14px;color:#0E0E0E">2026-05-28 Weekly Ops</span>
+          <div class="flex-wrap" style="align-items:center;gap:8px">
+            <span style="color:#7A7A7A">2026-05-28</span>
+            <span style="color:#7A7A7A;display:inline-block;transform:rotate(180deg)">▾</span>
+          </div>
+        </div>
+        <div style="margin-top:8px;border-top:1px solid rgba(14,14,14,0.09);padding-top:8px;font-size:12px;color:#7A7A7A;line-height:1.6">
+          Discussed Q3 pipeline targets, new operator onboarding process, and client satisfaction metrics.
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:24px;padding:16px;font-size:11px;color:#7A7A7A">
+      field13 Command Center · Ghibli Pixel-Aesthetic
+    </div>
+  </div>
+</body>
+</html>

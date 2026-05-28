@@ -1,0 +1,41 @@
+<h2>Three Approaches for field13 Dashboard</h2>
+<p class="subtitle">We already agreed on Approach 1 — here are the trade-offs</p>
+
+<div class="cards" style="margin-top:1rem;">
+  <div class="card" onclick="toggleSelect(this);">
+    <div class="card-body">
+      <h3>✅ Approach 1: Custom Obsidian Plugin (Recommended)</h3>
+      <p style="color:#3A3A3A;font-size:13px;">Follow the Obsidian-Dashboard guide exactly. Preact + TypeScript + Tailwind plugin installed at <code>.obsidian/plugins/field13-command-center/</code>. Full data layer with headless Claude scripts writing to <code>data/*.json</code>.</p>
+      <div class="pros-cons" style="margin-top:0.5rem;">
+        <div class="pros" style="font-size:12px;"><h4 style="font-size:12px;">Pros</h4><ul><li>Full control over UI &amp; interactions</li><li>No network needed (offline-first)</li><li>Follows the established guide</li><li>Ghibli pixel-art possible</li></ul></div>
+        <div class="cons" style="font-size:12px;"><h4 style="font-size:12px;">Cons</h4><ul><li>Requires building &amp; bundling</li><li>Plugin must be maintained</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleSelect(this);">
+    <div class="card-body">
+      <h3>Approach 2: Dataview + CSS Snippets</h3>
+      <p style="color:#3A3A3A;font-size:13px;">Use <strong>Obsidian Dataview</strong> plugin to query vault metadata and render tables/lists. Style with CSS snippets. All in markdown.</p>
+      <div class="pros-cons" style="margin-top:0.5rem;">
+        <div class="pros" style="font-size:12px;"><h4 style="font-size:12px;">Pros</h4><ul><li>Much faster to set up</li><li>No build step</li><li>Easy to edit</li></ul></div>
+        <div class="cons" style="font-size:12px;"><h4 style="font-size:12px;">Cons</h4><ul><li>Limited interactivity</li><li>No one-click skill buttons</li><li>No custom card layouts</li><li>Can't style as Ghibli/pixel-art easily</li><li>Requires Dataview knowledge</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="toggleSelect(this);">
+    <div class="card-body">
+      <h3>Approach 3: Standalone Web Dashboard</h3>
+      <p style="color:#3A3A3A;font-size:13px;">Build a React web app (like the existing field13 website) that reads vault files via a local server. Runs in browser side-by-side with Obsidian.</p>
+      <div class="pros-cons" style="margin-top:0.5rem;">
+        <div class="pros" style="font-size:12px;"><h4 style="font-size:12px;">Pros</h4><ul><li>Richer animations &amp; interactions</li><li>Any tech stack possible</li></ul></div>
+        <div class="cons" style="font-size:12px;"><h4 style="font-size:12px;">Cons</h4><ul><li>Not inside Obsidian (separate window)</li><li>Requires local server running</li><li>Can't use Obsidian APIs</li><li>More complex to set up</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:1rem;color:#7A7A7A;font-family:monospace;font-size:11px;">
+  Approach 1 is the strongest — the rest of the design assumes we're building a custom plugin.
+</p>

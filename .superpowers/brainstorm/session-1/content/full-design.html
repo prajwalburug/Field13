@@ -1,0 +1,52 @@
+<h2>Full Design: Tab by Tab</h2>
+
+<div class="section">
+  <h3>Tab 1: Command Center</h3>
+  <div style="background:#F4F1EB;border:1px solid rgba(14,14,14,0.09);border-radius:6px;padding:1rem;font-family:monospace;font-size:11px;color:#3A3A3A;">
+    <div><strong style="color:#1A4A3A;">Hero Banner</strong> — 180px tall, Ghibli pixel-art background, live clock, "Good morning" greeting, status indicator</div>
+    <div style="margin-top:4px;"><strong style="color:#1A4A3A;">Scorecard</strong> — 2×2 grid: Active Clients, Operators, Monthly Revenue, Active Programs. Reads <code>00-Command-Center/?? Home.md</code></div>
+    <div style="margin-top:4px;"><strong style="color:#1A4A3A;">Calendar</strong> — Scrollable day rail + agenda list. Reads <code>data/calendar.json</code> (from refresh script)</div>
+    <div style="margin-top:4px;"><strong style="color:#1A4A3A;">Action Queue</strong> — Approve/dismiss rows. Reads <code>data/action-queue.json</code> (manual or script)</div>
+    <div style="margin-top:4px;"><strong style="color:#1A4A3A;">Skills Tiles</strong> — Grid of skill buttons, each fires <code>claude -p</code>. Shows loading state while running.</div>
+    <div style="margin-top:4px;"><strong style="color:#1A4A3A;">Engagements</strong> — Client rows with stage, last activity, blocker indicator. Reads vault files.</div>
+    <div style="margin-top:4px;"><strong style="color:#1A4A3A;">Operator Network</strong> — Roster from <code>03-Operator-Network/</code></div>
+    <div style="margin-top:4px;"><strong style="color:#1A4A3A;">Pipeline</strong> — Sales stages from <code>06-CRM/Pipeline Overview.md</code></div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Tab 2: News &amp; Signals</h3>
+  <div style="background:#F4F1EB;border:1px solid rgba(14,14,14,0.09);border-radius:6px;padding:1rem;font-family:monospace;font-size:11px;color:#3A3A3A;">
+    <div>RSS Dashboard plugin feeds rendered in Obsidian Web Viewer, styled to match dashboard.</div>
+    <div style="margin-top:4px;">Or: custom-built feed reader within the plugin using <code>rss-parser</code> in a Node.js refresh script.</div>
+    <div style="margin-top:4px;"><strong>Features:</strong> Search bar, source filter, grid/list toggle, bookmark, timeline sort</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Tab 3: Intelligence</h3>
+  <div style="background:#F4F1EB;border:1px solid rgba(14,14,14,0.09);border-radius:6px;padding:1rem;font-family:monospace;font-size:11px;color:#3A3A3A;">
+    <div>Meeting transcripts from <code>Operations/Meetings/</code> — list view, expand inline</div>
+    <div style="margin-top:4px;">Email highlights from <code>data/gmail-highlights.json</code></div>
+    <div style="margin-top:4px;">Each section is recent items list; click to expand full content</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Error &amp; Empty States</h3>
+  <div style="background:#F4F1EB;border:1px solid rgba(14,14,14,0.09);border-radius:6px;padding:1rem;font-family:monospace;font-size:11px;color:#3A3A3A;">
+    <div>📭 <strong>Empty data</strong> — "No data yet. Run the refresh script." + a Refresh button</div>
+    <div style="margin-top:4px;">⚠️ <strong>File not found</strong> — "Source file missing at <code>data/calendar.json</code>"</div>
+    <div style="margin-top:4px;">⏳ <strong>Loading</strong> — Skeleton cards (pulsing gray blocks)</div>
+    <div style="margin-top:4px;">🔁 <strong>Manual refresh</strong> — Every card has a small ↻ refresh button</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Refresh Scripts</h3>
+  <div style="background:#F4F1EB;border:1px solid rgba(14,14,14,0.09);border-radius:6px;padding:1rem;font-family:monospace;font-size:11px;color:#3A3A3A;">
+    <div><code>.claude/scripts/cc-refresh-calendar.sh</code> — Google Calendar API → <code>data/calendar.json</code></div>
+    <div><code>.claude/scripts/cc-refresh-rss.sh</code> — RSS feeds → <code>data/news.json</code></div>
+    <div>Run via cron (Linux) or Task Scheduler (Windows), or manually from dashboard button</div>
+  </div>
+</div>

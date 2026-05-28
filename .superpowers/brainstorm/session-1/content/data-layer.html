@@ -1,0 +1,60 @@
+<h2>Data Layer: No Claude Needed</h2>
+<p class="subtitle">Almost all your data is already in the vault — parse markdown directly</p>
+
+<div class="section">
+  <h3>Zero-cost alternatives</h3>
+  
+  <div style="background:#F4F1EB;border-radius:6px;border:1px solid rgba(14,14,14,0.09);padding:1rem;font-family:monospace;font-size:11px;color:#3A3A3A;margin-top:0.5rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+      
+      <div>
+        <div style="font-weight:bold;color:#1A4A3A;margin-bottom:4px;">✅ Scorecard</div>
+        <div>Plugin reads <code>?? Home.md</code> markdown table directly. Zero cost.</div>
+      </div>
+      
+      <div>
+        <div style="font-weight:bold;color:#1A4A3A;margin-bottom:4px;">✅ Engagements</div>
+        <div>Plugin reads <code>02-Sales-Clients/</code> and <code>06-CRM/</code> files. Zero cost.</div>
+      </div>
+      
+      <div>
+        <div style="font-weight:bold;color:#1A4A3A;margin-bottom:4px;">✅ Operators</div>
+        <div>Plugin reads <code>03-Operator-Network/</code> files. Zero cost.</div>
+      </div>
+      
+      <div>
+        <div style="font-weight:bold;color:#1A4A3A;margin-bottom:4px;">✅ Pipeline</div>
+        <div>Plugin reads <code>06-CRM/Pipeline Overview.md</code>. Zero cost.</div>
+      </div>
+      
+      <div>
+        <div style="font-weight:bold;color:#1A4A3A;margin-bottom:4px;">📋 Calendar</div>
+        <div>Small Node.js/PowerShell script with Google Calendar API (free tier). Button or Task Scheduler.</div>
+      </div>
+      
+      <div>
+        <div style="font-weight:bold;color:#1A4A3A;margin-bottom:4px;">📋 Action Queue</div>
+        <div>Manual entry or simple script. No AI needed for task tracking.</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Revised data flow</h3>
+  <div style="background:#1A4A3A;color:#F4F1EB;padding:1rem;border-radius:6px;font-family:monospace;font-size:12px;text-align:center;line-height:2;">
+    <div>── Plugin reads vault .md files directly ──</div>
+    <div>│                          ↓              │</div>
+    <div>── Parse with gray-matter + regex ──</div>
+    <div>│                          ↓              │</div>
+    <div>── Render in dashboard cards ──</div>
+    <div>│                          ↓              │</div>
+    <div>── Optional: refresh script for Calendar ──</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>When would you need Claude/MCP?</h3>
+  <p style="color:#3A3A3A;font-size:13px;">Only if you want AI-generated summaries — like "summarize this week's Slack activity" in the Intelligence tab. But even that can start simple: just show raw meeting notes from <code>Operations/Meetings/</code>.</p>
+</div>
