@@ -8,7 +8,7 @@ const OperatorsHero = () => {
           <em>It should pay.</em>
         </h1>
         <p className="hero-sub">
-          If you have a genuine opinion about the tools you use — and an audience that listens — we want to work with you. Long-term advocacy programs with B2B brands that actually match your workflow. No scripts. No fakery. Just your honest voice, structured and paid.
+          Genuine opinions + an audience that listens = paid advocacy. Long-term B2B programs matched to your workflow. No scripts. Just your voice, paid.
         </p>
         <div className="hero-actions">
           <a href="#apply" className="btn-primary">

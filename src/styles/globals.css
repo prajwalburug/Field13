@@ -503,7 +503,7 @@ footer {
   .operator-teaser { flex-direction: column; }
   .btn-primary, .btn-secondary, .nav-cta, .btn-light { min-height: 44px; display: inline-flex; align-items: center; }
   .operators-hero { padding: 7rem 1.5rem 4rem; }
-  .operators-hero .hero-headline { font-size: clamp(28px, 7vw, 38px); }
+  .operators-hero .hero-headline { font-size: clamp(30px, 7.5vw, 44px); }
   .operators-hero .hero-number { display: none; }
   .operators-hero .hero-grid-line { display: none; }
   .operators-hero .hero-watermark { display: none; }
@@ -524,7 +524,7 @@ footer {
   .how-intro { font-size: clamp(20px, 6vw, 28px); }
   .btn-primary, .btn-light { width: 100%; justify-content: center; }
   .operators-hero { padding: 5rem 1.25rem 3rem; }
-  .operators-hero .hero-headline { font-size: clamp(22px, 8vw, 32px); }
+  .operators-hero .hero-headline { font-size: clamp(24px, 8.5vw, 38px); }
 }
 
 /* Hero — deep green bg */
