@@ -2,9 +2,8 @@ import './styles/globals.css';
 import Nav from './components/layout/Nav';
 import Hero from './components/sections/Hero';
 import ProblemSection from './components/sections/ProblemSection';
-import HowWeWork from './components/sections/HowWeWork';
-import UseCasesSection from './components/sections/UseCasesSection';
-import DifferenceSection from './components/sections/DifferenceSection';
+import WhatWeDo from './components/sections/WhatWeDo';
+import HowItWorksSimple from './components/sections/HowItWorksSimple';
 import WhoSection from './components/sections/WhoSection';
 import OperatorTeaser from './components/sections/OperatorTeaser';
 import CTASection from './components/sections/CTASection';
@@ -22,9 +21,8 @@ function App() {
             <div>
               <Hero />
               <ProblemSection />
-              <HowWeWork />
-              <UseCasesSection />
-              <DifferenceSection />
+              <WhatWeDo />
+              <HowItWorksSimple />
               <WhoSection />
               <OperatorTeaser />
               <CTASection />
