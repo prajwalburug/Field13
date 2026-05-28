@@ -284,6 +284,34 @@ section { padding: 7rem 3rem; }
 }
 .how-step:hover { background: rgba(255,255,255,0.02); }
 
+/* USE CASES */
+.use-cases-section { background: var(--bg-2); }
+.use-cases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin-top: 3rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 0.5px solid var(--border);
+  background: var(--border);
+}
+.use-case-card {
+  background: var(--bg-card);
+  padding: 2.5rem 2rem;
+}
+.use-case-label {
+  font-size: 11px; color: var(--accent);
+  letter-spacing: 0.1em; margin-bottom: 1rem;
+}
+.use-case-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px; letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.use-case-body { font-size: 13px; color: var(--ink-3); line-height: 1.7; }
+
 /* DIFFERENCE */
 .diff-section { background: var(--bg-2); }
 .diff-header {
@@ -743,5 +771,6 @@ textarea { resize: vertical; min-height: 100px; }
   .what-this-grid { grid-template-columns: 1fr; }
   .who-split { grid-template-columns: 1fr; }
   .earn-grid { grid-template-columns: 1fr; }
+  .use-cases-grid { grid-template-columns: 1fr; }
   .form-row-2 { grid-template-columns: 1fr; }
 }

@@ -3,6 +3,7 @@ import Nav from './components/layout/Nav';
 import Hero from './components/sections/Hero';
 import ProblemSection from './components/sections/ProblemSection';
 import HowWeWork from './components/sections/HowWeWork';
+import UseCasesSection from './components/sections/UseCasesSection';
 import DifferenceSection from './components/sections/DifferenceSection';
 import WhoSection from './components/sections/WhoSection';
 import OperatorTeaser from './components/sections/OperatorTeaser';
@@ -22,6 +23,7 @@ function App() {
               <Hero />
               <ProblemSection />
               <HowWeWork />
+              <UseCasesSection />
               <DifferenceSection />
               <WhoSection />
               <OperatorTeaser />
