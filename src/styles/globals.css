@@ -115,7 +115,7 @@ section { padding: 7rem 3rem; }
 }
 .hero-headline {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(42px, 6vw, 82px);
+  font-size: clamp(40px, 7vw, 96px);
   line-height: 1.05;
   letter-spacing: -0.025em;
   color: var(--ink);
@@ -210,7 +210,7 @@ section { padding: 7rem 3rem; }
 }
 .problem-headline {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(28px, 4vw, 52px);
+  font-size: clamp(26px, 5vw, 64px);
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 3rem;
@@ -248,7 +248,7 @@ section { padding: 7rem 3rem; }
 }
 .how-intro {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(26px, 3.5vw, 44px);
+  font-size: clamp(24px, 4.5vw, 56px);
   letter-spacing: -0.02em;
   line-height: 1.2;
   max-width: 640px;
@@ -320,7 +320,7 @@ section { padding: 7rem 3rem; }
 }
 .diff-headline {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(28px, 3.5vw, 48px);
+  font-size: clamp(26px, 4.5vw, 60px);
   letter-spacing: -0.02em;
   line-height: 1.15;
 }
@@ -388,7 +388,7 @@ section { padding: 7rem 3rem; }
 }
 .operator-headline {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(26px, 3.5vw, 44px);
+  font-size: clamp(24px, 4.5vw, 56px);
   line-height: 1.15; letter-spacing: -0.02em;
   max-width: 540px;
   margin-bottom: 1rem;
@@ -420,7 +420,7 @@ section { padding: 7rem 3rem; }
 }
 .cta-headline {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(36px, 5vw, 68px);
+  font-size: clamp(34px, 6vw, 84px);
   letter-spacing: -0.025em;
   line-height: 1.05;
   margin-bottom: 1.5rem;
@@ -543,12 +543,12 @@ footer {
   nav { padding: 0.75rem 1rem; }
   section { padding: 4rem 1.25rem; }
   .hero { padding: 5rem 1.25rem 3rem; }
-  .hero-headline { font-size: 24px; }
-  .cta-headline { font-size: 28px; }
-  .how-intro { font-size: 22px; }
+  .hero-headline { font-size: clamp(22px, 8vw, 32px); }
+  .cta-headline { font-size: clamp(26px, 8vw, 36px); }
+  .how-intro { font-size: clamp(20px, 6vw, 28px); }
   .btn-primary, .btn-light { width: 100%; justify-content: center; }
   .operators-hero { padding: 5rem 1.25rem 3rem; }
-  .operators-hero .hero-headline { font-size: 24px; }
+  .operators-hero .hero-headline { font-size: clamp(22px, 8vw, 32px); }
 }
 
 /* Hero — deep green bg */
@@ -604,7 +604,7 @@ footer {
 .who-split .how-eyebrow { margin-bottom: 2.5rem; }
 .who-split-headline {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(26px, 3.5vw, 44px);
+  font-size: clamp(24px, 4.5vw, 56px);
   letter-spacing: -0.02em;
   line-height: 1.2;
   margin-bottom: 1.5rem;
