@@ -8,7 +8,7 @@ const OperatorsFinalCTA = () => {
           We typically respond within 5 business days.
         </p>
         <div className="cta-form">
-          <a href="https://tally.so/r/your-operator-form" target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <a href="https://tally.so/r/xXlbWG" target="_blank" rel="noopener noreferrer" className="btn-primary">
             Apply to be an early operator →
           </a>
         </div>
