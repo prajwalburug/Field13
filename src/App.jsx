@@ -2,10 +2,13 @@ import './styles/globals.css';
 import Nav from './components/layout/Nav';
 import Hero from './components/sections/Hero';
 import ProblemSection from './components/sections/ProblemSection';
-import WhatWeDo from './components/sections/WhatWeDo';
-import HowItWorksSimple from './components/sections/HowItWorksSimple';
+import Marquee from './components/sections/Marquee';
 import WhoSection from './components/sections/WhoSection';
-import OperatorTeaser from './components/sections/OperatorTeaser';
+import FunnelSection from './components/sections/FunnelSection';
+import ProgramPhases from './components/sections/ProgramPhases';
+import ComparisonSection from './components/sections/ComparisonSection';
+import OneRuleBand from './components/sections/OneRuleBand';
+import PricingSection from './components/sections/PricingSection';
 import CTASection from './components/sections/CTASection';
 import Footer from './components/layout/Footer';
 import Operators from './pages/Operators';
@@ -20,11 +23,14 @@ function App() {
           <Route path="/" element={
             <div>
               <Hero />
+              <Marquee />
               <ProblemSection />
-              <WhatWeDo />
-              <HowItWorksSimple />
               <WhoSection />
-              <OperatorTeaser />
+              <FunnelSection />
+              <ProgramPhases />
+              <ComparisonSection />
+              <OneRuleBand />
+              <PricingSection />
               <CTASection />
               <Footer />
             </div>

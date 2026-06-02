@@ -7,9 +7,14 @@ const CTASection = () => {
         <p className="cta-sub">
           We work with a small number of clients at a time. Tell us about your product — we'll tell you honestly if we can move the needle.
         </p>
-        <a href="https://tally.so/r/gDkVdN" target="_blank" rel="noopener noreferrer" className="btn-primary">
-          See if you're a fit →
-        </a>
+        <div className="hero-actions" style={{justifyContent: 'center'}}>
+          <a href="https://tally.so/r/gDkVdN" target="_blank" rel="noopener noreferrer" className="btn-primary">
+            See if you're a fit →
+          </a>
+          <a href="/operators" className="btn-secondary">
+            For operators →
+          </a>
+        </div>
       </div>
     </section>
   );
