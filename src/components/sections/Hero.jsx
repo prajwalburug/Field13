@@ -23,17 +23,18 @@ const Hero = () => {
             </div>
           </div>
           <div className="hero-right">
-            <div className="hero-stat">
-              <span className="hero-stat-num">100%</span>
-              <span className="hero-stat-label">Genuine operators only</span>
-            </div>
-            <div className="hero-stat">
-              <span className="hero-stat-num">3–6 mo</span>
-              <span className="hero-stat-label">Programs that compound</span>
-            </div>
-            <div className="hero-stat">
-              <span className="hero-stat-num">8</span>
-              <span className="hero-stat-label">Phases, every one with a deliverable</span>
+            <div className="hero-stack">
+              <div className="hero-stack-title">The DFY program</div>
+              <ul className="hero-stack-items">
+                <li>Operator sourcing + vetting</li>
+                <li>Narrative strategy</li>
+                <li>Weekly content guidance</li>
+                <li>Targeted community distribution</li>
+                <li>Monthly trust signals report</li>
+                <li>Renewal + expansion review</li>
+              </ul>
+              <div className="hero-stack-price">$3,000 – $5,000 / mo</div>
+              <div className="hero-stack-note">Strategy sprint credited toward month 1</div>
             </div>
           </div>
         </div>

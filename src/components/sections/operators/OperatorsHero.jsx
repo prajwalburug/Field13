@@ -4,11 +4,10 @@ const OperatorsHero = () => {
       <div className="container">
         <div className="hero-eyebrow">For operators</div>
         <h1 className="hero-headline">
-          You've built real expertise.<br />
-          <em>It should pay.</em>
+          Your expertise is <br /><em>marketable.</em>
         </h1>
         <p className="hero-sub">
-          Genuine opinions + an audience that listens = paid advocacy. Long-term B2B programs matched to your workflow. No scripts. Just your voice, paid.
+          Paid, long-term B2B advocacy programs matched to your actual workflow and audience. Your voice, your standards. No scripts. No fake enthusiasm.
         </p>
         <div className="hero-actions">
           <a href="#apply" className="btn-primary">
