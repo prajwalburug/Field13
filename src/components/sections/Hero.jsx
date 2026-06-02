@@ -33,8 +33,7 @@ const Hero = () => {
                 <li>Monthly trust signals report</li>
                 <li>Renewal + expansion review</li>
               </ul>
-              <div className="hero-stack-price">$3,000 – $5,000 / mo</div>
-              <div className="hero-stack-note">Strategy sprint credited toward month 1</div>
+
             </div>
           </div>
         </div>

@@ -663,7 +663,7 @@ footer {
 }
 .phase {
   display: grid;
-  grid-template-columns: 50px 1fr 200px;
+  grid-template-columns: 50px 1fr;
   gap: 1.5rem;
   align-items: center;
   padding: 1.25rem 1.5rem;
@@ -682,20 +682,6 @@ footer {
   margin-bottom: 0.2rem;
 }
 .phase-desc { font-size: 12px; color: var(--ink-3); line-height: 1.5; }
-.phase-out {
-  font-size: 11px;
-  color: var(--ink-3);
-  line-height: 1.5;
-  text-align: right;
-}
-.phase-out-label {
-  display: block;
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.25rem;
-}
 
 /* COMPARISON TABLE */
 .comp-table {
@@ -943,7 +929,6 @@ footer {
   .funnel-left { width: 100%; flex-direction: row; align-items: center; }
   .phase { grid-template-columns: 1fr; gap: 0.25rem; text-align: left; }
   .phase-n { font-size: 16px; }
-  .phase-out { text-align: left; }
   .comp-row { grid-template-columns: 1fr; }
   .comp-cell { border-right: none; border-bottom: 0.5px solid var(--border); padding: 1rem; }
   .comp-cell:last-child { border-bottom: none; }
@@ -977,8 +962,6 @@ footer {
   .funnel-step { padding: 1.5rem 1rem; }
   .phase { padding: 1rem 1.25rem; }
   .phase-name { font-size: 16px; }
-  .pricing-card { padding: 2rem 1.25rem; }
-  .pricing-amt { font-size: 26px; }
   .comp-cell { padding: 0.85rem 1rem; }
   .operators-hero { padding: 5rem 1.25rem 3rem; }
   .operators-hero .hero-headline { font-size: clamp(24px, 8.5vw, 38px); }

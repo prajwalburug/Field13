@@ -8,7 +8,6 @@ import FunnelSection from './components/sections/FunnelSection';
 import ProgramPhases from './components/sections/ProgramPhases';
 import ComparisonSection from './components/sections/ComparisonSection';
 import OneRuleBand from './components/sections/OneRuleBand';
-import PricingSection from './components/sections/PricingSection';
 import CTASection from './components/sections/CTASection';
 import Footer from './components/layout/Footer';
 import Operators from './pages/Operators';
@@ -30,7 +29,6 @@ function App() {
               <ProgramPhases />
               <ComparisonSection />
               <OneRuleBand />
-              <PricingSection />
               <CTASection />
               <Footer />
             </div>
