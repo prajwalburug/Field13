@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,6 +26,7 @@ const Nav = () => {
         <Link to="/signal" className="nav-link" onClick={closeMenu}>Signal</Link>
         <Link to="/insights" className="nav-link" onClick={closeMenu}>Insights</Link>
         <Link to="/about" className="nav-link" onClick={closeMenu}>About</Link>
+        <ThemeToggle />
         <a href="https://cal.com/field13-r657gn/45min" className="nav-cta" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
           Book Strategy Call
         </a>

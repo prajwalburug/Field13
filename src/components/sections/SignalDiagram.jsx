@@ -8,6 +8,7 @@ const SignalDiagram = () => {
         <div className="diagram-flow">
           {steps.map((step, i) => (
             <span key={step} className="diagram-step">
+              <span className="diagram-dot"></span>
               {step}
               {i < steps.length - 1 && <span className="diagram-arrow">↓</span>}
             </span>
