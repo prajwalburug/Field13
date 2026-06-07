@@ -1,18 +1,16 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <footer>
       <div>
-        <a href="/" className="footer-logo">
-          field13
-        </a>
-        <div className="footer-sub">Operator advocacy for B2B tools</div>
+        <Link to="/" className="footer-logo">FIELD13</Link>
+        <div className="footer-sub">AI-native GTM company</div>
       </div>
       <div className="footer-links">
-        <a href="/#how">How it works</a>
-        <a href="/operators">For operators</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-          LinkedIn
-        </a>
+        <Link to="/signal">Signal</Link>
+        <Link to="/about">About</Link>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </footer>
   );

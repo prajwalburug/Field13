@@ -1,18 +1,17 @@
 const CTASection = () => {
   return (
-    <section className="cta-section" id="contact">
-      <div className="container-narrow">
-        <div className="cta-eyebrow">Limited availability</div>
-        <h2 className="cta-headline">Let's find out<br /><em>if we're a fit.</em></h2>
+    <section id="cta" className="cta-section">
+      <div className="container">
+        <div className="section-label">Next step</div>
+        <h2 className="cta-headline">
+          Become the signal your market remembers.
+        </h2>
         <p className="cta-sub">
-          We take on 2–3 new clients per quarter. Tell us about your product — we'll tell you honestly if we can move the needle.
+          Book a strategy conversation. No pitch. No proposal. Just a discussion about where trust is built in your category.
         </p>
-        <div className="hero-actions" style={{justifyContent: 'center'}}>
-          <a href="https://tally.so/r/gDkVdN" target="_blank" rel="noopener noreferrer" className="btn-primary">
-            See if you're a fit →
-          </a>
-          <a href="/operators" className="btn-secondary">
-            For operators →
+        <div className="cta-actions">
+          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
+            Book Strategy Call →
           </a>
         </div>
       </div>

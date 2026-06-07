@@ -1,21 +1,16 @@
-const OperatorsHero = () => {
+const OperatorsSimpleHero = () => {
   return (
     <section className="hero operators-hero">
       <div className="container">
         <div className="hero-eyebrow">For operators</div>
         <h1 className="hero-headline">
-          Your expertise is <br /><em>marketable.</em>
+          Your expertise is <em>marketable.</em>
         </h1>
         <p className="hero-sub">
           Paid, long-term B2B advocacy programs matched to your actual workflow and audience. Your voice, your standards. No scripts. No fake enthusiasm.
         </p>
         <div className="hero-actions">
-          <a href="#apply" className="btn-primary">
-            Apply to be an early operator →
-          </a>
-          <a href="#how-it-works" className="btn-secondary">
-            How it works ↓
-          </a>
+          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Apply Interest →</a>
         </div>
         <div className="hero-grid-line"></div>
         <div className="hero-watermark">f13</div>
@@ -25,4 +20,4 @@ const OperatorsHero = () => {
   );
 };
 
-export default OperatorsHero;
+export default OperatorsSimpleHero;

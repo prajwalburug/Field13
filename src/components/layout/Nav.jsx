@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -7,9 +8,9 @@ const Nav = () => {
 
   return (
     <nav>
-      <a href="/" className="nav-logo">
-        field13
-      </a>
+      <Link to="/" className="nav-logo" onClick={closeMenu}>
+        FIELD13
+      </Link>
       <button
         className={`hamburger ${menuOpen ? 'open' : ''}`}
         onClick={() => setMenuOpen(!menuOpen)}
@@ -21,17 +22,11 @@ const Nav = () => {
       </button>
       <div className={`nav-overlay ${menuOpen ? 'open' : ''}`} onClick={closeMenu}></div>
       <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <a href="/#how" className="nav-link" onClick={closeMenu}>
-          How it works
-        </a>
-        <a href="/#who" className="nav-link" onClick={closeMenu}>
-          Who it's for
-        </a>
-        <a href="/operators" className="nav-link" onClick={closeMenu}>
-          For operators
-        </a>
-        <a href="/#contact" className="nav-cta" onClick={closeMenu}>
-          Let's talk →
+        <Link to="/signal" className="nav-link" onClick={closeMenu}>Signal</Link>
+        <Link to="/insights" className="nav-link" onClick={closeMenu}>Insights</Link>
+        <Link to="/about" className="nav-link" onClick={closeMenu}>About</Link>
+        <a href="https://cal.com/field13-r657gn/45min" className="nav-cta" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+          Book Strategy Call
         </a>
       </div>
     </nav>
