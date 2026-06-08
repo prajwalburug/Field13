@@ -206,7 +206,8 @@ section { padding: 7rem 3rem; }
   position: absolute; right: 3rem; bottom: 5rem;
   font-family: 'Instrument Serif', serif;
   font-size: 120px; color: transparent;
-  -webkit-text-stroke: 0.5px rgba(244,241,235,0.06);
+  -webkit-text-stroke: 0.5px var(--accent);
+  opacity: 0.06;
   line-height: 1;
   letter-spacing: -0.04em;
   user-select: none; pointer-events: none;
@@ -224,7 +225,8 @@ section { padding: 7rem 3rem; }
   transform: translateY(-50%);
   font-family: 'Instrument Serif', serif;
   font-size: 180px; color: transparent;
-  -webkit-text-stroke: 0.5px rgba(244,241,235,0.04);
+  -webkit-text-stroke: 0.5px var(--accent);
+  opacity: 0.04;
   line-height: 1; letter-spacing: -0.05em;
   user-select: none; pointer-events: none;
 }
@@ -1227,6 +1229,8 @@ textarea { resize: vertical; min-height: 100px; }
   100% { transform: translateX(-50%); }
 }
 [data-theme="light"] .ticker-item { opacity: 0.35; }
+[data-theme="light"] .hero-number { opacity: 0.02; }
+[data-theme="light"] .hero-watermark { opacity: 0.035; }
 
 /* MANIFESTO */
 .manifesto-section { background: var(--accent-2); }
@@ -1340,21 +1344,51 @@ textarea { resize: vertical; min-height: 100px; }
   max-width: 720px;
   margin-bottom: 2rem;
 }
-.market-sources {
+.evidence-stack {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
   display: flex;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-  padding: 2rem 0;
-  border-top: 0.5px solid var(--border);
-  border-bottom: 0.5px solid var(--border);
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 520px;
 }
-.market-sources span {
+.evidence-item {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(18px, 3vw, 32px);
+  font-size: clamp(18px, 3vw, 28px);
   font-style: italic;
-  color: var(--accent);
+  color: var(--ink-2);
   letter-spacing: -0.02em;
+  line-height: 1.3;
+  padding-left: 2.5rem;
+  position: relative;
+}
+.evidence-item::before {
+  content: counter(evidence-counter);
+  counter-increment: evidence-counter;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-style: normal;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+.evidence-stack {
+  counter-reset: evidence-counter;
+}
+
+/* FADE UP — scroll reveal */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* PANELS */
@@ -1696,6 +1730,71 @@ textarea { resize: vertical; min-height: 100px; }
   line-height: 1.7;
   max-width: 560px;
 }
+/* WHAT SIGNAL ACTUALLY DOES */
+.what-signal-section { background: var(--bg-2); }
+.what-signal-intro {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(22px, 3.5vw, 38px);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 2.5rem;
+  max-width: 640px;
+}
+.what-signal-systems {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.what-signal-item {
+  background: var(--bg-card);
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.what-signal-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.what-signal-desc {
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+.what-signal-outcome {
+  margin-top: 2rem;
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(20px, 3vw, 32px);
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* BUILT FOR */
+.built-for-section { text-align: center; }
+.built-for-list {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(18px, 3vw, 28px);
+  letter-spacing: -0.02em;
+  color: var(--ink-2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  line-height: 1.3;
+}
+.built-for-sep {
+  color: var(--ink-3);
+  opacity: 0.3;
+}
+
 
 @media (max-width: 1024px) {
   .insights-grid { grid-template-columns: 1fr 1fr; }
@@ -1735,8 +1834,8 @@ textarea { resize: vertical; min-height: 100px; }
   .ticker-item { font-size: 10px; padding: 0 1.25rem; }
 
   .market-text { font-size: clamp(20px, 5vw, 28px); }
-  .market-sources { gap: 1.5rem; }
-  .market-sources span { font-size: clamp(16px, 4vw, 22px); }
+  .evidence-item { font-size: clamp(16px, 4vw, 22px); padding-left: 2rem; }
+  .evidence-item::before { font-size: 11px; }
 
   .manifesto-text { font-size: clamp(18px, 4.5vw, 26px); }
 
@@ -1798,6 +1897,7 @@ textarea { resize: vertical; min-height: 100px; }
   .hero-headline { font-size: clamp(30px, 9vw, 38px); }
   .hero-sub { font-size: 12px; }
   .stat-block { padding: 3rem 1.25rem; }
+  .evidence-item { font-size: clamp(15px, 4.5vw, 20px); padding-left: 1.75rem; }
   .signal-hero { padding-top: 6rem; }
   .signal-hero .hero-headline { font-size: clamp(30px, 9vw, 38px); }
   .cta-headline { font-size: clamp(26px, 8vw, 36px); }

@@ -10,22 +10,22 @@ const PanelsSection = () => {
             <div className="panel-status">Available Today</div>
             <div className="panel-name">Signal</div>
             <div className="panel-desc">
-              Founder positioning. Narrative strategy. Founder media. Content systems. Distribution. One recurring GTM engine for companies that need to become the obvious choice.
+              Become the voice your market trusts. Signal combines market intelligence, narrative strategy, founder media and distribution into one recurring positioning system. Built to compound trust over time.
             </div>
-            <div className="panel-cta">Explore Signal →</div>
+            <div className="panel-cta">Explore Signal ?</div>
           </Link>
           <div className="panel panel-soon">
             <div className="panel-status">Coming Soon</div>
             <div className="panel-name">Systems</div>
             <div className="panel-desc">
-              AI-native GTM infrastructure for companies that need process, not tactics.
+              Build GTM infrastructure that scales. Research. Outbound. Automation. Operations. The systems behind modern growth.
             </div>
           </div>
           <div className="panel panel-soon">
             <div className="panel-status">Coming Soon</div>
             <div className="panel-name">Operators</div>
             <div className="panel-desc">
-              Trusted practitioners building market credibility through authentic advocacy.
+              Build trust through the people your buyers already trust. A network of practitioners and operators who shape market perception through real experience.
             </div>
           </div>
         </div>

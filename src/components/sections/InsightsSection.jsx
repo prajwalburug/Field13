@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 
 const insights = [
   {
@@ -27,7 +27,7 @@ const InsightsSection = () => {
   return (
     <section id="insights">
       <div className="container">
-        <div className="section-label">Latest research</div>
+        <div className="section-label">Field Notes</div>
         <div className="insights-grid">
           {insights.map((item, i) => (
             <Link to={`/insights/${item.title.toLowerCase().replace(/\s+/g, '-')}`} className="insight-card insight-link" key={i}>

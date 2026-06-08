@@ -6,9 +6,11 @@ import StatBlock from './components/sections/StatBlock';
 import MarketSignalTicker from './components/sections/MarketSignalTicker';
 import MarketChanged from './components/sections/MarketChanged';
 import ManifestoSection from './components/sections/ManifestoSection';
+import WhatSignalDoes from './components/sections/WhatSignalDoes';
 import InsightsSection from './components/sections/InsightsSection';
 import PanelsSection from './components/sections/PanelsSection';
 import SignalDiagram from './components/sections/SignalDiagram';
+import BuiltForSection from './components/sections/BuiltForSection';
 import CTASection from './components/sections/CTASection';
 import Signal from './pages/Signal';
 import Operators from './pages/Operators';
@@ -41,9 +43,11 @@ function App() {
               <MarketSignalTicker />
               <MarketChanged />
               <ManifestoSection />
+              <WhatSignalDoes />
               <InsightsSection />
               <PanelsSection />
               <SignalDiagram />
+              <BuiltForSection />
               <CTASection />
               <Footer />
             </div>

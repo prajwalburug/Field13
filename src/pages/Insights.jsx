@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import Footer from '../components/layout/Footer';
 
 const articles = [
@@ -33,9 +33,9 @@ const Insights = () => {
     <>
       <section className="hero insights-hero">
         <div className="container">
-          <div className="section-label">Latest research</div>
+          <div className="section-label">Field Notes</div>
           <h1 className="hero-headline">
-            Research on the future of B2B GTM.
+            Notes on the future of B2B GTM.
           </h1>
           <p className="hero-sub">
             Essays on founder media, dark funnel, community GTM, and the signals that build market trust.

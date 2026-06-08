@@ -1,33 +1,25 @@
 import Footer from '../components/layout/Footer';
 
-const included = [
+const systems = [
   {
-    title: 'Founder Positioning',
-    desc: 'Develop a clear market narrative that separates you from competitors.'
+    title: 'Signal Intelligence',
+    desc: 'Category intelligence reports. Competitor narrative analysis. Emerging conversation tracking. Market signal dashboard. Audience sentiment scans.'
   },
   {
-    title: 'Narrative Strategy',
-    desc: 'Build repeatable ideas your market begins to associate with your company.'
+    title: 'Signal Narrative',
+    desc: 'Founder positioning memo. Narrative architecture. Story bank. Category POV. Messaging framework.'
   },
   {
-    title: 'Founder Media',
-    desc: 'LinkedIn, newsletter and long-form content designed around authority rather than engagement.'
+    title: 'Signal Media',
+    desc: 'LinkedIn thought leadership. Founder newsletter. Long-form essays. Founder knowledge base. Content repository.'
   },
   {
-    title: 'Content System',
-    desc: 'A structured publishing engine that compounds over time.'
+    title: 'Signal Distribution',
+    desc: 'Community mapping. Strategic engagement. Podcast opportunities. Newsletter partnerships. Amplification strategy. Distribution reporting.'
   },
   {
-    title: 'Distribution Strategy',
-    desc: 'Make sure the right people repeatedly encounter your ideas where buying decisions actually happen.'
-  },
-  {
-    title: 'Market Intelligence',
-    desc: 'Monthly research into conversations, competitors and category shifts that influence your positioning.'
-  },
-  {
-    title: 'Performance Review',
-    desc: 'Monthly review of narrative performance and strategic adjustments.'
+    title: 'Signal Enablement',
+    desc: 'Monthly founder sessions. AMAs. Market breakdowns. GTM clinics. Product teardowns. Industry roundtables.'
   },
 ];
 
@@ -38,13 +30,10 @@ const Signal = () => {
         <div className="container">
           <div className="section-label">FIELD13 Signal</div>
           <h1 className="hero-headline">
-            Become the company buyers already trust.
+            Become the voice your market trusts.
           </h1>
           <p className="hero-sub">
-            Signal is FIELD13's executive positioning system for B2B founders.
-          </p>
-          <p className="hero-sub">
-            We help founders become the voice their market listens to through strategic narrative, consistent media and intelligent distribution.
+            Signal is FIELD13's market positioning infrastructure for B2B founders. Intelligence. Narrative. Media. Distribution. One system designed to compound category authority over time.
           </p>
           <div className="hero-actions">
             <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
@@ -55,9 +44,9 @@ const Signal = () => {
       </section>
       <section className="include-section">
         <div className="container container-narrow">
-          <div className="section-label">Included</div>
+          <div className="section-label">The systems</div>
           <div className="include-list-signal">
-            {included.map((item) => (
+            {systems.map((item) => (
               <div className="include-item-signal" key={item.title}>
                 <div className="include-item-title">{item.title}</div>
                 <div className="include-item-desc">{item.desc}</div>
@@ -69,7 +58,7 @@ const Signal = () => {
       <section className="outcome-section">
         <div className="container container-narrow">
           <div className="outcome-text">
-            More trust. More inbound. More category authority. Less dependence on paid acquisition.
+            Own a category narrative. Generate inbound trust. Become the answer when your category comes up.
           </div>
         </div>
       </section>

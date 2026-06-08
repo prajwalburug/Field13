@@ -3,13 +3,13 @@ const Hero = () => {
     <section className="hero">
       <div className="container">
         <h1 className="hero-headline">
-          Become the company buyers trust before they buy.
+          Become the company <em>buyers trust</em> before they buy.
         </h1>
         <p className="hero-sub">
-          The best B2B companies do not win because they market better. They win because the market already believes them.
+          Signal turns founder expertise into market trust through intelligence, narrative, media and distribution.
         </p>
         <p className="hero-sub">
-          FIELD13 builds the systems behind that trust through founder media, narrative strategy and modern GTM.
+          One recurring system designed to compound category authority over time.
         </p>
         <div className="hero-actions">
           <a href="/signal" className="btn-primary">
