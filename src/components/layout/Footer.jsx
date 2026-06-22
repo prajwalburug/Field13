@@ -5,12 +5,12 @@ const Footer = () => {
     <footer>
       <div>
         <Link to="/" className="footer-logo">FIELD13</Link>
-        <div className="footer-sub">AI-native GTM company</div>
+        <div className="footer-sub">Revenue Architecture</div>
       </div>
       <div className="footer-links">
-        <Link to="/signal">Signal</Link>
         <Link to="/about">About</Link>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <Link to="/insights">Insights</Link>
+        <a href="https://cal.com/field13-r657gn/45min" target="_blank" rel="noopener noreferrer">Book a check</a>
       </div>
     </footer>
   );

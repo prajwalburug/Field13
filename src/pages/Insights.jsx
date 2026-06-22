@@ -1,68 +1,79 @@
-﻿import { Link } from 'react-router-dom';
+﻿import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { allContent, allTags, scorecardContent } from '../data/content';
 import Footer from '../components/layout/Footer';
 
-const articles = [
-  {
-    slug: 'the-end-of-brand-marketing',
-    title: 'The End of Brand Marketing',
-    topic: 'Future of B2B Buying',
-    summary: 'How trust became the new acquisition channel.'
-  },
-  {
-    slug: 'why-communities-beat-campaigns',
-    title: 'Why Communities Beat Campaigns',
-    topic: 'Dark Funnel',
-    summary: 'The most effective GTM happens in places you cannot track.'
-  },
-  {
-    slug: 'founder-media-is-the-new-abm',
-    title: 'Founder Media Is the New ABM',
-    topic: 'Founder Media',
-    summary: 'One founder post can generate more pipeline than an entire quarter of ABM.'
-  },
-  {
-    slug: 'signal-in-a-noisy-market',
-    title: 'Signal in a Noisy Market',
-    topic: 'Future of GTM',
-    summary: 'In a market where everyone shouts, the winning strategy is to become the signal.'
-  },
-];
-
 const Insights = () => {
+  const [activeTag, setActiveTag] = useState(null);
+
+  const filtered = activeTag
+    ? allContent.filter((c) => c.tags.includes(activeTag))
+    : allContent;
+
   return (
     <>
       <section className="hero insights-hero">
         <div className="container">
-          <div className="section-label">Field Notes</div>
+          <div className="section-label">Resources</div>
           <h1 className="hero-headline">
-            Notes on the future of B2B GTM.
+            Free resources for the problems <em>we see every week.</em>
           </h1>
           <p className="hero-sub">
-            Essays on founder media, dark funnel, community GTM, and the signals that build market trust.
+            Organized by the pain point, not the feature. Pick what is actually slowing you down.
           </p>
         </div>
       </section>
       <section>
         <div className="container">
-          <div className="insights-grid">
-            {articles.map((a) => (
+          <div className="tags-bar">
+            <button
+              className={`tag-pill${activeTag === null ? ' active' : ''}`}
+              onClick={() => setActiveTag(null)}
+            >All</button>
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                className={`tag-pill${activeTag === tag ? ' active' : ''}`}
+                onClick={() => setActiveTag(tag)}
+              >{tag}</button>
+            ))}
+          </div>
+          <div className="insights-grid insights-grid-2col">
+            {filtered.map((a) => (
               <Link to={`/insights/${a.slug}`} className="insight-card insight-link" key={a.slug}>
-                <div className="insight-topic">{a.topic}</div>
+                <div className="insight-topic">{a.tags[0]}</div>
                 <h3 className="insight-title">{a.title}</h3>
                 <p className="insight-summary">{a.summary}</p>
-                <div className="insight-read">Read →</div>
+                <div className="insight-read">{a.readTime || '5 min read'} →</div>
               </Link>
             ))}
           </div>
         </div>
       </section>
-      <section className="cta-section">
+      <section className="scorecard-section">
         <div className="container container-narrow">
-          <div className="section-label">Newsletter</div>
-          <h2 className="cta-headline">Get the latest research.</h2>
-          <p className="cta-sub">Essays on the future of B2B GTM delivered to your inbox.</p>
+          <div className="section-label">Or skip the reading</div>
+          <h2 className="cta-headline">
+            Get the <em>5-dimension scorecard</em>
+          </h2>
+          <p className="cta-sub">
+            The same scorecard we use on every client, as a free self-assessment you can run today.
+          </p>
           <div className="cta-actions">
-            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Subscribe →</a>
+            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
+              Book your free Process Check →
+            </a>
+          </div>
+        </div>
+      </section>
+      <section className="cta-section cta-section-dark">
+        <div className="container container-narrow">
+          <h2 className="cta-headline">Book your <em>free Process Check</em></h2>
+          <p className="cta-sub">3 fixes or it is on us. No pitch, no commitment.</p>
+          <div className="cta-actions">
+            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
+              Book your free Process Check →
+            </a>
           </div>
         </div>
       </section>

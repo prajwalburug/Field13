@@ -1,25 +1,23 @@
 import './styles/globals.css';
 import Nav from './components/layout/Nav';
 import Footer from './components/layout/Footer';
-import Hero from './components/sections/Hero';
-import StatBlock from './components/sections/StatBlock';
-import MarketSignalTicker from './components/sections/MarketSignalTicker';
-import MarketChanged from './components/sections/MarketChanged';
-import ManifestoSection from './components/sections/ManifestoSection';
-import WhatSignalDoes from './components/sections/WhatSignalDoes';
-import InsightsSection from './components/sections/InsightsSection';
-import PanelsSection from './components/sections/PanelsSection';
-import SignalDiagram from './components/sections/SignalDiagram';
-import BuiltForSection from './components/sections/BuiltForSection';
-import CTASection from './components/sections/CTASection';
-import Signal from './pages/Signal';
-import Operators from './pages/Operators';
+import CRMHero from './components/sections/CRMHero';
+import RiskReversalBanner from './components/sections/RiskReversalBanner';
+import CRMPainPoints from './components/sections/CRMPainPoints';
+import CRMHowItWorks from './components/sections/CRMHowItWorks';
+import GuaranteeSection from './components/sections/GuaranteeSection';
+import AboutTeaser from './components/sections/AboutTeaser';
+import InsightsTeaser from './components/sections/InsightsTeaser';
+import CRMCTA from './components/sections/CRMCTA';
 import About from './pages/About';
 import Insights from './pages/Insights';
 import TheEndOfBrandMarketing from './pages/insights/TheEndOfBrandMarketing';
 import WhyCommunitiesBeatCampaigns from './pages/insights/WhyCommunitiesBeatCampaigns';
 import FounderMediaIsTheNewABM from './pages/insights/FounderMediaIsTheNewABM';
 import SignalInANoisyMarket from './pages/insights/SignalInANoisyMarket';
+import CategoryIntelligenceBrief from './pages/insights/CategoryIntelligenceBrief';
+import NarrativeArchitectureFramework from './pages/insights/NarrativeArchitectureFramework';
+import DistributionMapTemplate from './pages/insights/DistributionMapTemplate';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -38,28 +36,32 @@ function App() {
         <Routes>
           <Route path="/" element={
             <div>
-              <Hero />
-              <StatBlock />
-              <MarketSignalTicker />
-              <MarketChanged />
-              <ManifestoSection />
-              <WhatSignalDoes />
-              <InsightsSection />
-              <PanelsSection />
-              <SignalDiagram />
-              <BuiltForSection />
-              <CTASection />
+              <CRMHero />
+              <RiskReversalBanner />
+              <CRMPainPoints />
+              <CRMHowItWorks />
+              <GuaranteeSection />
+              <section className="teaser-pair">
+                <div className="container">
+                  <div className="teaser-grid">
+                    <AboutTeaser />
+                    <InsightsTeaser />
+                  </div>
+                </div>
+              </section>
+              <CRMCTA />
               <Footer />
             </div>
           } />
-          <Route path="/signal" element={<Signal />} />
-          <Route path="/operators" element={<Operators />} />
           <Route path="/about" element={<About />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/insights/the-end-of-brand-marketing" element={<TheEndOfBrandMarketing />} />
           <Route path="/insights/why-communities-beat-campaigns" element={<WhyCommunitiesBeatCampaigns />} />
           <Route path="/insights/founder-media-is-the-new-abm" element={<FounderMediaIsTheNewABM />} />
           <Route path="/insights/signal-in-a-noisy-market" element={<SignalInANoisyMarket />} />
+          <Route path="/insights/category-intelligence-brief" element={<CategoryIntelligenceBrief />} />
+          <Route path="/insights/narrative-architecture-framework" element={<NarrativeArchitectureFramework />} />
+          <Route path="/insights/distribution-map-template" element={<DistributionMapTemplate />} />
         </Routes>
       </>
     </Router>

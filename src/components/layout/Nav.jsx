@@ -12,23 +12,27 @@ const Nav = () => {
       <Link to="/" className="nav-logo" onClick={closeMenu}>
         FIELD13
       </Link>
-      <button
-        className={`hamburger ${menuOpen ? 'open' : ''}`}
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div className="nav-right">
+        <a href="https://cal.com/field13-r657gn/45min" className="nav-cta nav-cta-desktop" target="_blank" rel="noopener noreferrer">
+          Book free check
+        </a>
+        <ThemeToggle />
+        <button
+          className={`hamburger ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
       <div className={`nav-overlay ${menuOpen ? 'open' : ''}`} onClick={closeMenu}></div>
       <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/signal" className="nav-link" onClick={closeMenu}>Signal</Link>
-        <Link to="/insights" className="nav-link" onClick={closeMenu}>Insights</Link>
         <Link to="/about" className="nav-link" onClick={closeMenu}>About</Link>
-        <ThemeToggle />
-        <a href="https://cal.com/field13-r657gn/45min" className="nav-cta" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
-          Book Strategy Call
+        <Link to="/insights" className="nav-link" onClick={closeMenu}>Insights</Link>
+        <a href="https://cal.com/field13-r657gn/45min" className="nav-cta nav-cta-mobile" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+          Book free check
         </a>
       </div>
     </nav>
