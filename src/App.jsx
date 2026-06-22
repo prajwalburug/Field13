@@ -18,6 +18,7 @@ import SignalInANoisyMarket from './pages/insights/SignalInANoisyMarket';
 import CategoryIntelligenceBrief from './pages/insights/CategoryIntelligenceBrief';
 import NarrativeArchitectureFramework from './pages/insights/NarrativeArchitectureFramework';
 import DistributionMapTemplate from './pages/insights/DistributionMapTemplate';
+import ProcessCheck from './pages/ProcessCheck';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -62,6 +63,7 @@ function App() {
           <Route path="/insights/category-intelligence-brief" element={<CategoryIntelligenceBrief />} />
           <Route path="/insights/narrative-architecture-framework" element={<NarrativeArchitectureFramework />} />
           <Route path="/insights/distribution-map-template" element={<DistributionMapTemplate />} />
+          <Route path="/process-check" element={<ProcessCheck />} />
         </Routes>
       </>
     </Router>
