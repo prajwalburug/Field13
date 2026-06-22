@@ -142,7 +142,7 @@ const ProcessCheck = () => {
           </div>
 
           {phase === 'quiz' && (
-            <div className="process-card fade-up" key={current}>
+            <div className="process-card " key={current}>
               <div className="process-q-tag">
                 Dimension {DIMS.indexOf(QUESTIONS[current].dim) + 1} of 5 &mdash; {QUESTIONS[current].dim}
                 <span className="process-q-num">Question {current + 1} of {QUESTIONS.length}</span>
@@ -172,7 +172,7 @@ const ProcessCheck = () => {
           )}
 
           {phase === 'gate' && (
-            <div className="process-card fade-up">
+            <div className="process-card ">
               <div className="process-q-tag">Last step</div>
               <div className="process-q-text">Where should we send your score?</div>
               <div className="process-gate">
@@ -194,7 +194,7 @@ const ProcessCheck = () => {
           )}
 
           {phase === 'results' && results && (
-            <div className="process-results fade-up">
+            <div className="process-results ">
               <div className="process-sent">Sent to {email} -- shown below too.</div>
 
               <div className="process-shell">
