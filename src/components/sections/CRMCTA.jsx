@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const CRMCTA = () => {
   return (
     <section className="cta-section cta-section-dark">
@@ -10,6 +12,11 @@ const CRMCTA = () => {
           <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
             Book your free Process Check →
           </a>
+        </div>
+        <div className="cta-secondary">
+          <Link to="/process-check" className="btn-secondary">
+            Or run it yourself →
+          </Link>
         </div>
       </div>
     </section>

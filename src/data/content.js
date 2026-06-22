@@ -57,7 +57,8 @@ export const allTags = [...new Set(content.flatMap((c) => c.tags))].sort();
 export const scorecardContent = {
   title: 'Get the 5-dimension scorecard',
   summary: 'The same scorecard we use on every client, as a free self-assessment you can run today.',
-  cta: 'Book your free Process Check →'
+  cta: 'Run the self-check →',
+  ctaLink: '/process-check'
 };
 
 export const getContentBySlug = (slug) => content.find((c) => c.slug === slug);

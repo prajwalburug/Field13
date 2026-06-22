@@ -60,9 +60,9 @@ const Insights = () => {
             The same scorecard we use on every client, as a free self-assessment you can run today.
           </p>
           <div className="cta-actions">
-            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
-              Book your free Process Check →
-            </a>
+            <Link to="/process-check" className="btn-primary">
+              Run the self-check →
+            </Link>
           </div>
         </div>
       </section>

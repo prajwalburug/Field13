@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const CRMHero = () => {
   return (
     <section className="hero">
@@ -13,6 +15,9 @@ const CRMHero = () => {
           <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
             Book your free Process Check →
           </a>
+          <Link to="/process-check" className="btn-secondary">
+            Take the self-assessment →
+          </Link>
         </div>
         <div className="hero-guarantee-line">3 fixes or it is on us. No pitch, no commitment.</div>
       </div>

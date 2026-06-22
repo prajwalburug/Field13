@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Footer from '../components/layout/Footer';
 
 const About = () => {
@@ -49,9 +50,12 @@ const About = () => {
             If you want to see what we would find in your portal, it starts with one free call.
           </p>
           <div className="about-actions">
-            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
-              Book your free Process Check →
-            </a>
+          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
+            Book your free Process Check →
+          </a>
+          <Link to="/process-check" className="btn-secondary" style={{marginTop: '0.75rem'}}>
+            Take the self-assessment →
+          </Link>
           </div>
         </div>
       </section>
