@@ -2,21 +2,27 @@ import { CAL_LINK } from '../../data/site';
 import HeroCanvas from '../three/HeroCanvas';
 import AgentTrace from '../ui/AgentTrace';
 
-// The engineering stack, by layer. Business tools are mapped per client on the call.
+// What we build with: engineering plus the creative models marketers already know.
+// Only tools we actually use; the rest of the stack is mapped per client on the call.
+// Interleaved so creative names show up early in the loop.
 const stack = [
   { name: 'Claude', layer: 'models' },
-  { name: 'OpenAI', layer: 'models' },
-  { name: 'Gemini', layer: 'models' },
+  { name: 'Seedance', layer: 'video' },
   { name: 'LangGraph', layer: 'agents' },
+  { name: 'Nano Banana', layer: 'image' },
+  { name: 'OpenAI', layer: 'models' },
+  { name: 'ElevenLabs', layer: 'voice' },
   { name: 'Pydantic AI', layer: 'agents' },
+  { name: 'GPT Image', layer: 'image' },
+  { name: 'Gemini', layer: 'models' },
+  { name: 'Remotion', layer: 'video editing' },
   { name: 'LlamaIndex', layer: 'retrieval' },
+  { name: 'Fish Audio', layer: 'voice' },
   { name: 'pgvector', layer: 'retrieval' },
   { name: 'Langfuse', layer: 'tracing' },
   { name: 'LangSmith', layer: 'evals' },
   { name: 'Postgres', layer: 'data' },
-  { name: 'Redis', layer: 'data' },
   { name: 'Python', layer: 'runtime' },
-  { name: 'TypeScript', layer: 'runtime' },
   { name: 'FastAPI', layer: 'services' },
   { name: 'Docker', layer: 'infra' },
   { name: 'Terraform', layer: 'infra' },
@@ -66,8 +72,8 @@ const Hero = () => {
       </div>
 
       <div className="f13-wrap f13-builton">
-        <div className="f13-label">Engineered with</div>
-        <div className="f13-marquee" aria-label="Engineering stack">
+        <div className="f13-label">Built with</div>
+        <div className="f13-marquee" aria-label="Models and tools we build with" tabIndex={0}>
           <div className="f13-marquee-track">
             <StackRow />
             <StackRow hidden />

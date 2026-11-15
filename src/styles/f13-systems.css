@@ -92,7 +92,7 @@
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
-.f13-marquee-track { display: flex; width: max-content; animation: f13-marquee 48s linear infinite; }
+.f13-marquee-track { display: flex; width: max-content; animation: f13-marquee 55s linear infinite; }
 .f13-marquee:hover .f13-marquee-track { animation-play-state: paused; }
 .f13-builton .f13-marquee-row { list-style: none; margin: 0; padding: 0; display: flex; flex: none; gap: 0; grid-template-columns: none; }
 .f13-builton .f13-marquee-row li { display: inline-flex; flex-direction: row; align-items: baseline; gap: 0.5rem; padding: 0 1.6rem; position: relative; }
@@ -101,12 +101,12 @@
 .f13-marquee-layer { font-family: var(--f13-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--f13-white-40); white-space: nowrap; }
 @keyframes f13-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* Reduced motion: no autoplay; the row becomes a quiet horizontal scroller */
+.f13-marquee:focus-within .f13-marquee-track, .f13-marquee:focus .f13-marquee-track { animation-play-state: paused; }
+.f13-marquee:focus-visible { outline: 1px solid var(--f13-white-40); outline-offset: 6px; border-radius: 4px; }
+/* Reduced motion: keep it moving (it's the point of a marquee) but at half speed,
+   and it still pauses on hover or keyboard focus. */
 @media (prefers-reduced-motion: reduce) {
-  .f13-marquee { overflow-x: auto; scrollbar-width: none; }
-  .f13-marquee::-webkit-scrollbar { display: none; }
-  .f13-marquee-track { animation: none; }
-  .f13-builton .f13-marquee-row[aria-hidden] { display: none; }
+  .f13-marquee-track { animation-duration: 110s; }
 }
 @media (max-width: 640px) {
   .f13-builton { grid-template-columns: 1fr; gap: 0.9rem; }
@@ -137,3 +137,6 @@
 .br-files { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.25rem; }
 .br-files .f13-textlink { color: #9DB3FF; }
 @media (max-width: 760px) { .br-head, .br-grid { grid-template-columns: 1fr; } .br-sizes { gap: 1rem; } }
+
+/* Founder card: optional second title line */
+.f13-person-subtitle { display: block; margin-top: 0.35rem; color: var(--f13-white-60); }

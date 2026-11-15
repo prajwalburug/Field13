@@ -2,7 +2,8 @@ const founders = [
   {
     name: 'Prajwal',
     role: 'Founder',
-    title: 'Builds AI growth systems',
+    title: 'Builds AI marketing systems',
+    subtitle: 'And growth systems for outbound and lead-gen',
     photo: '/media/prajwal.jpg',
     alt: 'Portrait of Prajwal against a blue background',
     lead: 'Works where marketing, sales and engineering usually hand off, and builds the system so they never have to.',
@@ -43,7 +44,7 @@ const Team = () => {
                   <h3 className="f13-h3">{f.name}</h3>
                   <span className="f13-chip">{f.role}</span>
                 </div>
-                <div className="f13-person-title">{f.title}</div>
+                <div className="f13-person-title">{f.title}{f.subtitle && <span className="f13-person-subtitle">{f.subtitle}</span>}</div>
                 <p className="f13-person-lead">{f.lead}</p>
                 <ul className="f13-person-points">
                   {f.points.map((p) => (
