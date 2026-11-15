@@ -1,64 +1,53 @@
-import { Link } from 'react-router-dom';
 import Footer from '../components/layout/Footer';
+import PageHero from '../components/f13/PageHero';
+import Team from '../components/f13/Team';
+import FinalCta from '../components/f13/FinalCta';
+import Guarantees from '../components/f13/Guarantees';
+
+const disciplines = [
+  { name: 'AI engineering', body: 'Agent orchestration, retrieval, checks and guardrails. Sets the architecture on every engagement.', skills: 'LangGraph · LangChain · RAG · Evals' },
+  { name: 'GTM and data', body: 'Signals, enrichment, CRM and ad-platform integrations, scraping pipelines and the revenue model behind every dashboard.', skills: 'HubSpot · Clay · treg · Postgres' },
+  { name: 'Creative engineering', body: 'UGC and ad creative made by pipeline, so variants, captions and formats come from one system instead of an editing queue.', skills: 'Seedance · Remotion · Zernio' },
+  { name: 'Platform and product', body: 'Infrastructure, monitoring and cost controls in your cloud, plus the dashboards and tools your team actually uses.', skills: 'FastAPI · Next.js · Docker' }
+];
 
 const About = () => {
   return (
     <>
-      <section className="hero about-hero">
-        <div className="container container-narrow">
-          <div className="section-label">About</div>
-          <h1 className="hero-headline mission-headline">
-            We do one thing. <em>We do it for five clients at a time.</em>
-          </h1>
-        </div>
-      </section>
+      <PageHero
+        tag="About"
+        eyebrow="Who we are"
+        title={<>Plenty of teams have an AI demo.<br /><em>Few have one that runs every Monday.</em></>}
+        lede="Field13 gets it there and keeps it running. Two founders: one builds the systems, the other has spent the ad budgets."
+      />
 
-      <section>
-        <div className="container container-narrow">
-          <p className="mission-text">
-            RevArc exists because HubSpot does not fail at setup. It fails six months later, quietly, when the team stops trusting it.
-          </p>
-          <p className="mission-text">
-            Most agencies sell you a configured portal. We start with a process map: how leads come in, who qualifies them, what happens after a quote, how a closed deal gets handed to delivery, what leadership actually needs to see. Only after that map is drawn do we open HubSpot.
-          </p>
-        </div>
-      </section>
+      <Team />
 
-      <section className="about-spec-section">
-        <div className="container container-narrow">
-          <div className="section-label">Three things that do not change once you sign</div>
-          <div className="about-spec-list">
-            <div className="about-spec-item">
-              <div className="about-spec-label">One person, start to finish</div>
-              <p className="about-spec-desc">The person who runs your Health Check builds your system and stays on it. No delegation.</p>
+      <Guarantees />
+
+      <section className="f13-sheet f13-sheet-graphite">
+        <div className="f13-wrap">
+          <div className="f13-split-head">
+            <div>
+              <div className="f13-label">The system, by layer</div>
+              <h2 className="f13-h2">Agents, data, creative, infrastructure.<br /><em>One system on your account.</em></h2>
             </div>
-            <div className="about-spec-item">
-              <div className="about-spec-label">3 to 5 active clients, on purpose</div>
-              <p className="about-spec-desc">We cap it so every client gets direct access, not a queue.</p>
-            </div>
-            <div className="about-spec-item">
-              <div className="about-spec-label">Fixed timelines</div>
-              <p className="about-spec-desc">You will know the date before you sign.</p>
-            </div>
+            <p className="f13-lede">Four layers, built to work together inside your accounts. When your scope grows, we extend the system instead of adding people you have to manage.</p>
+          </div>
+          <div className="f13-cards f13-cards-4">
+            {disciplines.map((d, i) => (
+              <div className="f13-card" key={d.name}>
+                <span className="f13-card-n">0{i + 1}</span>
+                <h3 className="f13-h3">{d.name}</h3>
+                <p>{d.body}</p>
+                <div className="f13-card-skills">{d.skills}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section>
-        <div className="container container-narrow">
-          <p className="mission-text" style={{fontSize: '15px', color: 'var(--ink)'}}>
-            If you want to see what we would find in your portal, it starts with one free call.
-          </p>
-          <div className="about-actions">
-          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">
-            Book your free Process Check →
-          </a>
-          <Link to="/process-check" className="btn-secondary" style={{marginTop: '0.75rem'}}>
-            Take the self-assessment →
-          </Link>
-          </div>
-        </div>
-      </section>
+      <FinalCta />
       <Footer />
     </>
   );

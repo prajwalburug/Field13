@@ -1,0 +1,139 @@
+/* =========================================================
+   What we build: system manifest + agency band
+   ========================================================= */
+/* The intro sits on the same baseline as the heading's last line, not the bottom of its box
+   (the italic line has deep descenders, so box-bottom alignment floats the intro). */
+.wb-head { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: last baseline; margin-bottom: 3rem; }
+.wb-head .f13-h2 { margin: 1.1rem 0 0; }
+.wb-head .f13-lede { margin: 0; max-width: 44ch; }
+
+.wb-table { border-top: 1px solid var(--f13-ink); }
+.wb-row {
+  display: grid; grid-template-columns: minmax(0, 3.2fr) minmax(0, 4.4fr) minmax(0, 4.4fr); gap: 2.5rem;
+  padding: 1.6rem 0; border-bottom: 1px solid var(--f13-ink-12); align-items: start;
+}
+.wb-row-head { padding: 0.8rem 0; font-family: var(--f13-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--f13-ink-60); }
+.wb-sys { display: grid; grid-template-columns: 2.25rem 1fr; row-gap: 0.45rem; align-items: baseline; }
+.wb-n { font-family: var(--f13-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--f13-ink-60); }
+.wb-name { margin: 0; font-family: var(--f13-serif); font-weight: 300; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.05; letter-spacing: -0.015em; color: var(--f13-ink); }
+.wb-where { grid-column: 2; font-family: var(--f13-mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--f13-cobalt); }
+.wb-ships { margin: 0; font-size: 16px; line-height: 1.55; color: var(--f13-ink); max-width: 40ch; }
+.wb-check { margin: 0; position: relative; padding-left: 1.5rem; font-size: 14.5px; line-height: 1.6; color: var(--f13-ink-60); max-width: 40ch; }
+.wb-check::before {
+  content: ""; position: absolute; left: 0; top: 0.42em; width: 11px; height: 6px;
+  border-left: 1.5px solid var(--f13-cobalt); border-bottom: 1.5px solid var(--f13-cobalt); transform: rotate(-45deg);
+}
+.wb-row:not(.wb-row-head) { transition: background 0.25s; }
+@media (hover: hover) {
+  .wb-row:not(.wb-row-head):hover { background: linear-gradient(90deg, transparent, rgba(14,42,143,0.035) 30%, transparent); }
+}
+
+.wb-foot { display: flex; gap: 1.75rem; flex-wrap: wrap; margin: 1.5rem 0 3.5rem; }
+
+.wb-agency {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; overflow: hidden;
+  border-radius: var(--f13-radius-card); background: var(--f13-white);
+  box-shadow: 0 1px 0 rgba(14,14,14,0.04), 0 18px 40px -28px rgba(14,14,14,0.35);
+}
+.wb-agency-copy { padding: 2.25rem 2.25rem 2.1rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+.wb-agency-copy .f13-chip { border-color: var(--f13-ink-12); color: var(--f13-ink-60); }
+.wb-agency-copy .f13-h3 { font-size: 30px; font-weight: 300; margin: 0.2rem 0 0; color: var(--f13-ink); }
+.wb-agency-copy p { margin: 0; font-size: 15px; line-height: 1.65; color: var(--f13-ink-60); max-width: 46ch; }
+.wb-agency-copy .f13-textlink { margin-top: 0.4rem; }
+.wb-agency-visual { position: relative; min-height: 260px; margin: 8px; border-radius: 12px; overflow: hidden; }
+
+@media (max-width: 960px) {
+  .wb-head { grid-template-columns: 1fr; gap: 1.25rem; }
+  .wb-row-head { display: none; }
+  .wb-row { grid-template-columns: 1fr; gap: 0.8rem; padding: 1.4rem 0; }
+  .wb-ships, .wb-check { padding-left: 2.25rem; max-width: none; }
+  .wb-check { padding-left: 3.75rem; }
+  .wb-check::before { left: 2.25rem; }
+  .wb-agency { grid-template-columns: 1fr; }
+  .wb-agency-copy { padding: 1.6rem 1.4rem 1.5rem; }
+  .wb-agency-visual { min-height: 230px; }
+}
+
+/* =========================================================
+   Hero type
+   ========================================================= */
+.f13-hero-grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.95fr); gap: 4rem; }
+.f13-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--f13-mono); font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--f13-white-60);
+}
+.f13-hero-dot { width: 7px; height: 7px; border-radius: 50%; background: #9DF5B8; box-shadow: 0 0 0 4px rgba(157,245,184,0.12); }
+.f13-hero-title {
+  font-size: clamp(46px, 6.4vw, 96px); line-height: 0.96; letter-spacing: -0.035em; font-weight: 300;
+  margin: 1.5rem 0 1.75rem; text-wrap: balance; max-width: 11ch;
+}
+.f13-hero-title em { display: block; color: #C9D5FF; letter-spacing: -0.03em; }
+.f13-hero-lede { font-size: 18px; line-height: 1.6; max-width: 40ch; color: rgba(255,255,255,0.68); text-wrap: pretty; }
+@media (max-width: 1024px) {
+  .f13-hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .f13-hero-title { max-width: 13ch; }
+}
+@media (max-width: 640px) {
+  .f13-hero-lede { font-size: 16.5px; }
+}
+
+/* Who we are: just the title */
+.f13-team-head { margin-bottom: 2.5rem; }
+
+/* =========================================================
+   Hero: engineering stack marquee
+   Two identical rows, the track slides by exactly one row width,
+   so the loop is seamless. Pauses on hover; still under reduced motion.
+   ========================================================= */
+.f13-builton { margin-top: 3.5rem; padding-top: 1.4rem; grid-template-columns: 150px minmax(0, 1fr); gap: 1.5rem; align-items: center; }
+.f13-builton .f13-label { white-space: nowrap; }
+.f13-marquee {
+  overflow: hidden; min-width: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.f13-marquee-track { display: flex; width: max-content; animation: f13-marquee 48s linear infinite; }
+.f13-marquee:hover .f13-marquee-track { animation-play-state: paused; }
+.f13-builton .f13-marquee-row { list-style: none; margin: 0; padding: 0; display: flex; flex: none; gap: 0; grid-template-columns: none; }
+.f13-builton .f13-marquee-row li { display: inline-flex; flex-direction: row; align-items: baseline; gap: 0.5rem; padding: 0 1.6rem; position: relative; }
+.f13-builton .f13-marquee-row li::after { content: ""; position: absolute; right: 0; top: 50%; width: 3px; height: 3px; border-radius: 50%; background: var(--f13-white-40); transform: translateY(-50%); }
+.f13-marquee-name { font-family: var(--f13-serif); font-size: 21px; font-weight: 400; letter-spacing: -0.015em; color: rgba(255,255,255,0.9); white-space: nowrap; }
+.f13-marquee-layer { font-family: var(--f13-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--f13-white-40); white-space: nowrap; }
+@keyframes f13-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Reduced motion: no autoplay; the row becomes a quiet horizontal scroller */
+@media (prefers-reduced-motion: reduce) {
+  .f13-marquee { overflow-x: auto; scrollbar-width: none; }
+  .f13-marquee::-webkit-scrollbar { display: none; }
+  .f13-marquee-track { animation: none; }
+  .f13-builton .f13-marquee-row[aria-hidden] { display: none; }
+}
+@media (max-width: 640px) {
+  .f13-builton { grid-template-columns: 1fr; gap: 0.9rem; }
+  .f13-marquee-name { font-size: 18px; }
+  .f13-builton .f13-marquee-row li { padding: 0 1.1rem; }
+}
+
+/* =========================================================
+   Logo lockup (mark + wordmark)
+   ========================================================= */
+.f13-logo-lockup { display: inline-flex; align-items: center; gap: 10px; color: var(--f13-white); }
+.f13-logo-lockup svg { display: block; flex: none; }
+.f13-logo-lockup.is-grid { gap: 12px; }
+.f13-logo-word { font-family: var(--f13-mono); font-weight: 500; font-size: 14px; letter-spacing: 0.12em; line-height: 1; }
+
+/* Brand page */
+.br-head { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: last baseline; margin-bottom: 2rem; }
+.br-head .f13-lede { margin: 0; }
+.br-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.br-cell { position: relative; min-height: 220px; border-radius: var(--f13-radius-card); display: flex; align-items: center; justify-content: center; padding: 3rem 1.5rem 2rem; border: 1px solid var(--f13-white-12); }
+.br-dark { background: #000; }
+.br-light { background: var(--f13-bone); }
+.br-cap { position: absolute; top: 1rem; left: 1.1rem; font-family: var(--f13-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--f13-white-40); }
+.br-light .br-cap { color: var(--f13-ink-60); }
+.br-nav { padding: 1rem 1.25rem; border-radius: 10px; border: 1px solid var(--f13-white-12); background: rgba(255,255,255,0.03); }
+.br-mark-img { width: 160px; height: auto; }
+.br-sizes { display: flex; align-items: flex-end; gap: 1.5rem; }
+.br-files { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.25rem; }
+.br-files .f13-textlink { color: #9DB3FF; }
+@media (max-width: 760px) { .br-head, .br-grid { grid-template-columns: 1fr; } .br-sizes { gap: 1rem; } }

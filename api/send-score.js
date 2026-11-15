@@ -28,18 +28,18 @@ module.exports = async function handler(req, res) {
 
   const html = `
     <div style="max-width:520px;margin:0 auto;font-family:Arial,Helvetica,sans-serif;color:#1A1A1A;">
-      <p style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#3A6A5A;">RevArc Process Check</p>
+      <p style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#3A6A5A;">Field13 AI Readiness Score</p>
       <h1 style="font-size:26px;margin:8px 0 4px;">Hi ${name}, your score is ${overall_score}/100</h1>
-      <p style="color:#5A5A5A;line-height:1.6;">Here is how your portal scored across all five dimensions:</p>
+      <p style="color:#5A5A5A;line-height:1.6;">Here is how your setup scored across all five dimensions:</p>
       <table style="width:100%;border-collapse:collapse;margin:16px 0;border-top:1px solid #D9D5CA;border-bottom:1px solid #D9D5CA;">
         ${dimRows}
       </table>
       <h2 style="font-size:16px;margin:20px 0 8px;">Your top 3 fixes</h2>
       ${fixItems}
       <p style="margin-top:24px;">
-        <a href="https://cal.com/field13-r657gn/45min" style="background:#1A1A1A;color:#FAFAF8;padding:14px 24px;text-decoration:none;display:inline-block;font-size:13px;border-radius:3px;">Book your free Process Check call →</a>
+        <a href="https://cal.com/field13-r657gn/45min" style="background:#1A1A1A;color:#FAFAF8;padding:14px 24px;text-decoration:none;display:inline-block;font-size:13px;border-radius:3px;">Book a discovery call →</a>
       </p>
-      <p style="font-size:12px;color:#8A8A8A;margin-top:30px;border-top:1px solid #D9D5CA;padding-top:14px;">3 fixes or it is on us. — FIELD13 / RevArc</p>
+      <p style="font-size:12px;color:#8A8A8A;margin-top:30px;border-top:1px solid #D9D5CA;padding-top:14px;">FIELD13 — AI systems behind modern marketing</p>
     </div>
   `;
 
@@ -51,10 +51,10 @@ module.exports = async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "RevArc Process Check <onboarding@resend.dev>",
+        from: "Field13 <onboarding@resend.dev>",
         to: [email],
         bcc: ["prajwalburug20501@gmail.com"],
-        subject: `Your RevArc Process Check score: ${overall_score}/100`,
+        subject: `Your Field13 AI readiness score: ${overall_score}/100`,
         html,
       }),
     });
