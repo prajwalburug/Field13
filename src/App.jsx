@@ -1,25 +1,27 @@
 import './styles/globals.css';
+import './styles/premium.css';
+import './styles/f13.css';
+import './styles/f13-sections.css';
+import './styles/f13-pages.css';
+import './styles/f13-content.css';
+import './styles/f13-requests.css';
+import './styles/f13-how.css';
+import './styles/f13-systems.css';
 import Nav from './components/layout/Nav';
 import Footer from './components/layout/Footer';
-import CRMHero from './components/sections/CRMHero';
-import RiskReversalBanner from './components/sections/RiskReversalBanner';
-import CRMPainPoints from './components/sections/CRMPainPoints';
-import CRMHowItWorks from './components/sections/CRMHowItWorks';
-import GuaranteeSection from './components/sections/GuaranteeSection';
-import AboutTeaser from './components/sections/AboutTeaser';
-import InsightsTeaser from './components/sections/InsightsTeaser';
-import CRMCTA from './components/sections/CRMCTA';
+import Hero from './components/f13/Hero';
+import Products from './components/f13/Products';
+import HowItWorks from './components/f13/HowItWorks';
+import Team from './components/f13/Team';
+import Guarantees from './components/f13/Guarantees';
+import FinalCta from './components/f13/FinalCta';
+import Requests from './pages/Requests';
+import Agencies from './pages/Agencies';
+import UgcStudio from './pages/UgcStudio';
+import Brand from './pages/Brand';
 import About from './pages/About';
-import Insights from './pages/Insights';
-import TheEndOfBrandMarketing from './pages/insights/TheEndOfBrandMarketing';
-import WhyCommunitiesBeatCampaigns from './pages/insights/WhyCommunitiesBeatCampaigns';
-import FounderMediaIsTheNewABM from './pages/insights/FounderMediaIsTheNewABM';
-import SignalInANoisyMarket from './pages/insights/SignalInANoisyMarket';
-import CategoryIntelligenceBrief from './pages/insights/CategoryIntelligenceBrief';
-import NarrativeArchitectureFramework from './pages/insights/NarrativeArchitectureFramework';
-import DistributionMapTemplate from './pages/insights/DistributionMapTemplate';
 import ProcessCheck from './pages/ProcessCheck';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function ScrollToTop() {
@@ -37,33 +39,25 @@ function App() {
         <Routes>
           <Route path="/" element={
             <div>
-              <CRMHero />
-              <RiskReversalBanner />
-              <CRMPainPoints />
-              <CRMHowItWorks />
-              <GuaranteeSection />
-              <section className="teaser-pair">
-                <div className="container">
-                  <div className="teaser-grid">
-                    <AboutTeaser />
-                    <InsightsTeaser />
-                  </div>
-                </div>
-              </section>
-              <CRMCTA />
+              <Hero />
+              <Products />
+              <HowItWorks />
+              <Team />
+              <Guarantees />
+              <FinalCta />
               <Footer />
             </div>
           } />
           <Route path="/about" element={<About />} />
-          <Route path="/insights" element={<Insights />} />
-          <Route path="/insights/the-end-of-brand-marketing" element={<TheEndOfBrandMarketing />} />
-          <Route path="/insights/why-communities-beat-campaigns" element={<WhyCommunitiesBeatCampaigns />} />
-          <Route path="/insights/founder-media-is-the-new-abm" element={<FounderMediaIsTheNewABM />} />
-          <Route path="/insights/signal-in-a-noisy-market" element={<SignalInANoisyMarket />} />
-          <Route path="/insights/category-intelligence-brief" element={<CategoryIntelligenceBrief />} />
-          <Route path="/insights/narrative-architecture-framework" element={<NarrativeArchitectureFramework />} />
-          <Route path="/insights/distribution-map-template" element={<DistributionMapTemplate />} />
+          <Route path="/agencies" element={<Agencies />} />
+          <Route path="/ugc" element={<UgcStudio />} />
+          <Route path="/brand" element={<Brand />} />
+          <Route path="/requests" element={<Requests />} />
           <Route path="/process-check" element={<ProcessCheck />} />
+          {/* Retired pages: send old links home instead of to a blank page */}
+          <Route path="/pricing" element={<Navigate to="/" replace />} />
+          <Route path="/insights/*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </>
     </Router>

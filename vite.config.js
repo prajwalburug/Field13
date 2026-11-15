@@ -7,7 +7,9 @@ export default defineConfig({
   base: '/',
   server: {
     port: 5173,
-    strictPort: true
+    strictPort: true,
+    // `npm run cf:dev` serves the Pages Functions on 8788
+    proxy: { '/api': 'http://127.0.0.1:8788' }
   },
   build: {
     outDir: 'dist',

@@ -1,0 +1,117 @@
+/* =========================================================
+   How we work: pinned, scroll-scrubbed schematic.
+   The plan is drawn faint; the clip-path reveals the executed
+   layer up to the cursor. One rAF writes scroll -> DOM.
+   ========================================================= */
+
+/* overflow:hidden on .f13-sheet would make it the scroll container and kill sticky */
+.hw.f13-sheet { overflow: clip; padding-bottom: 0; }
+.hw .f13-how-head { margin-bottom: 0; }
+
+.hw-track { position: relative; height: 320vh; }
+.hw-stage { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; }
+.hw-stage-grid { display: grid; grid-template-columns: minmax(0, 4.2fr) minmax(0, 7.8fr); gap: 4rem; align-items: center; }
+
+/* ---------- Steps ---------- */
+.hw-steps { list-style: none; margin: 0; padding: 0 0 0 1.5rem; position: relative; }
+.hw-progress { position: absolute; left: 0; top: 0.4rem; bottom: 0.4rem; width: 1px; background: var(--f13-white-12); }
+.hw-progress > span { position: absolute; inset: 0; background: #fff; transform-origin: top; transform: scaleY(0); }
+.hw-step { padding: 1.1rem 0; border-top: 1px solid var(--f13-white-12); }
+.hw-step:first-of-type { border-top: none; }
+.hw-step-row { display: grid; grid-template-columns: 2.25rem 1fr auto; align-items: baseline; gap: 0.75rem; }
+.hw-step-n { font-family: var(--f13-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--f13-white-40); transition: color 0.4s; }
+.hw-step-name {
+  font-family: var(--f13-serif); font-weight: 300; font-size: clamp(26px, 2.4vw, 34px); line-height: 1.1; letter-spacing: -0.015em;
+  color: rgba(255,255,255,0.3); transition: color 0.4s; margin: 0;
+}
+.hw-step-time { font-family: var(--f13-mono); font-size: 10px; letter-spacing: 0.08em; text-align: right; text-transform: uppercase; color: var(--f13-white-40); transition: color 0.4s; }
+.hw-step-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.5s cubic-bezier(.2,.8,.2,1); }
+.hw-step-body > p {
+  overflow: hidden; margin: 0; padding-left: 3rem; font-size: 15px; line-height: 1.65; color: var(--f13-white-60); max-width: 44ch;
+  opacity: 0; transition: opacity 0.35s ease;
+}
+.hw-step.is-active .hw-step-body { grid-template-rows: 1fr; }
+.hw-step.is-active .hw-step-body > p { opacity: 1; padding-top: 0.75rem; transition-delay: 0.12s; }
+.hw-step.is-active .hw-step-name { color: #fff; }
+.hw-step.is-active .hw-step-n, .hw-step.is-active .hw-step-time { color: #fff; }
+.hw-step.is-past .hw-step-name { color: rgba(255,255,255,0.55); }
+
+/* ---------- Figure ---------- */
+.hw-figure { margin: 0; }
+.hw-svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--f13-mono); }
+.hw-caption { margin-top: 0.9rem; font-family: var(--f13-mono); font-size: 10.5px; letter-spacing: 0.04em; color: var(--f13-white-40); }
+.s-dot { fill: rgba(255,255,255,0.09); }
+
+/* Palette per layer: the plan is a blueprint, the executed layer is lit */
+.hw-plan { --ink: rgba(255,255,255,0.13); --ink-2: rgba(255,255,255,0.13); --hot: rgba(255,255,255,0.16); --ok: rgba(255,255,255,0.16); --warn: rgba(255,255,255,0.16); --text: rgba(255,255,255,0.22); --bg: var(--f13-graphite); }
+.hw-done { --ink: rgba(255,255,255,0.55); --ink-2: rgba(255,255,255,0.28); --hot: #9DB3FF; --ok: #7EE2A8; --warn: #FF9C9C; --text: rgba(255,255,255,0.78); --bg: var(--f13-graphite); }
+
+.hw-svg text { font-size: 9.5px; letter-spacing: 0.06em; fill: var(--text); }
+.hw-svg path, .hw-svg line { fill: none; stroke-width: 1; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+
+.s-phase text { font-size: 10px; letter-spacing: 0.14em; fill: var(--text); }
+.s-phase path { stroke: var(--ink-2); }
+.s-group { font-size: 8.5px !important; letter-spacing: 0.16em !important; }
+.s-pin { fill: var(--ink); }
+.s-drop path { stroke: var(--ink-2); stroke-dasharray: 2 3; }
+.s-drop .s-x { stroke: var(--warn); stroke-dasharray: none; }
+.s-keep path { stroke: var(--hot); stroke-width: 1.25; }
+.s-select rect { fill: var(--bg); stroke: var(--hot); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+.s-select .s-tagbox { stroke-dasharray: 3 2; }
+.s-select text { font-size: 9.5px; fill: var(--hot); }
+.s-select .s-leader { stroke: var(--hot); stroke-dasharray: 2 2; }
+.s-track path { stroke: var(--hot); stroke-width: 1.25; }
+.s-track text { font-size: 9px; }
+.s-gate path { stroke: var(--ink-2); stroke-dasharray: 2 3; }
+.s-gate rect { fill: var(--bg); stroke: var(--ok); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.s-gate text { fill: var(--ok); font-size: 9px; }
+.s-live circle { fill: var(--bg); stroke: var(--hot); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.s-live .s-core { fill: var(--hot); stroke: none; }
+.s-live text { fill: var(--hot); font-size: 10px; letter-spacing: 0.18em; }
+.s-band path { stroke: var(--ink-2); stroke-dasharray: 3 4; }
+.s-band text { font-size: 8.5px; }
+.s-signal { stroke: var(--hot); stroke-width: 1.4 !important; }
+.s-incident circle { fill: var(--bg); stroke: var(--warn); stroke-width: 1.25; vector-effect: non-scaling-stroke; }
+.s-incident path { stroke: var(--warn); stroke-dasharray: 2 2; }
+.s-incident text { fill: var(--ok); font-size: 8.5px; }
+.s-axis path { stroke: var(--ink); }
+.s-axis rect { fill: var(--hot); }
+.s-axis text { font-size: 9px; }
+.s-axis .s-date { font-size: 10.5px; fill: var(--text); letter-spacing: 0.02em; }
+.hw-done .s-axis .s-date { fill: #fff; }
+
+/* Glow only on the executed signal path, not everywhere */
+.hw-done .s-keep path, .hw-done .s-track path, .hw-done .s-signal { filter: drop-shadow(0 0 3px rgba(91,124,255,0.65)); }
+
+.hw-cursor path { stroke-width: 1; }
+.hw-readout-box { fill: #fff; }
+.hw-readout { font-size: 9.5px !important; letter-spacing: 0.08em !important; fill: var(--f13-ink) !important; font-weight: 500; font-variant-numeric: tabular-nums; }
+
+/* ---------- Reduced motion ----------
+   The scrub only moves when the reader scrolls, so it stays. Remove the eased
+   transitions and glow, which are motion the reader didn't ask for. */
+@media (prefers-reduced-motion: reduce) {
+  .hw-step-body, .hw-step-body > p, .hw-step-name, .hw-step-n, .hw-step-time { transition: none !important; }
+  .hw-done .s-keep path, .hw-done .s-track path, .hw-done .s-signal { filter: none; }
+}
+
+/* ---------- Tablet and phone: diagram on top, active step below ---------- */
+@media (max-width: 960px) {
+  .hw-track { height: 300vh; }
+  .hw-stage-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .hw-figure { order: -1; }
+  .hw-steps { padding-left: 1.1rem; }
+  .hw-step { padding: 0.8rem 0; }
+  .hw-step:not(.is-active) .hw-step-row { opacity: 0.75; }
+  .hw-step-body > p { padding-left: 3rem; font-size: 14.5px; }
+}
+@media (max-width: 560px) {
+  .hw-svg text { font-size: 12px; }
+  .s-track text, .s-gate text, .s-band text, .s-incident text, .s-group { display: none; }
+  .s-axis text:not(.s-date) { display: none; }
+  .s-axis .s-date { font-size: 12.5px; }
+  .s-select text { font-size: 9.5px; }
+  .hw-step-name { font-size: 24px; }
+  .hw-step-body > p { padding-left: 0; }
+  .hw-step-row { grid-template-columns: 1.9rem 1fr auto; }
+}
