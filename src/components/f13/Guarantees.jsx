@@ -27,7 +27,6 @@ const Guarantees = () => {
         <div className="f13-g-grid">
           {items.map((g) => (
             <div className="f13-g" key={g.n}>
-              <span className="f13-g-n">{g.n}</span>
               <h3 className="f13-h3">{g.name}</h3>
               <p className="f13-body">{g.body}</p>
             </div>

@@ -132,7 +132,7 @@ const Schematic = () => (
 
     <g className="s-axis">
       <path d={`M${X0},300 H${X1}`} />
-      {[[X0, 'Kick-off', 'first call', 'start'], [X_SCOPED, 'Price + date', 'fixed in writing', 'middle'], [X_LIVE, 'Live', 'on the agreed date', 'middle']].map(([x, a, b, anchor]) => (
+      {[[X0, 'Kick-off', 'first call', 'start'], [X_SCOPED, 'Price + date', 'fixed in writing', 'middle'], [X_LIVE, 'Live', 'on the agreed date', 'end']].map(([x, a, b, anchor]) => (
         <g key={a}>
           <path d={`M${x},296 V304`} />
           <text x={x} y="322" textAnchor={anchor} className="s-date">{a}</text>
@@ -259,8 +259,8 @@ const HowItWorks = () => {
                 <g ref={cursor} className="hw-cursor" transform={`translate(${X0} 0)`}>
                   <path d="M0,40 V300" stroke="url(#hw-cursor-g)" />
                   <g ref={readoutBox} transform="translate(62 0)">
-                    <rect x="-62" y="345" width="124" height="18" rx="2" className="hw-readout-box" />
-                    <text ref={readout} y="357.5" textAnchor="middle" className="hw-readout">DISCOVERY · AUDIT</text>
+                    <rect x="-62" y="348" width="124" height="18" rx="2" className="hw-readout-box" />
+                    <text ref={readout} y="360.5" textAnchor="middle" className="hw-readout">DISCOVERY · AUDIT</text>
                   </g>
                 </g>
               </svg>

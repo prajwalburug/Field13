@@ -3,7 +3,7 @@ const founders = [
     name: 'Prajwal',
     role: 'Founder',
     title: 'Builds AI marketing systems',
-    subtitle: 'And growth systems for outbound and lead-gen',
+    subtitle: 'And growth systems for outbound and lead‑gen',
     photo: '/media/prajwal.jpg',
     alt: 'Portrait of Prajwal against a blue background',
     lead: 'Works where marketing, sales and engineering usually hand off, and builds the system so they never have to.',
@@ -30,6 +30,7 @@ const Team = () => {
     <section className="f13-sheet f13-sheet-graphite f13-team" id="founders">
       <div className="f13-wrap">
         <div className="f13-team-head">
+          <div className="f13-label">Founders</div>
           <h2 className="f13-h2">Who we are</h2>
         </div>
 
