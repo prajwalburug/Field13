@@ -37,7 +37,6 @@ const Hero = () => {
         <div className="f13-hero-copy">
           <div className="f13-badge f13-hero-badge">
             <span className="f13-badge-tag"><span className="f13-hero-dot" aria-hidden="true" />For marketing teams and agencies</span>
-            <span className="f13-badge-text">UGC, content, ads and outbound</span>
           </div>
           <h1 className="f13-display f13-hero-title">
             We build <em>AI marketing systems.</em>

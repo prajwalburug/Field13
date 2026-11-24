@@ -33,3 +33,13 @@
 @media (max-width: 640px) {
   .f13-gx-grid-4 { grid-template-columns: 1fr; }
 }
+
+/* Hero: bigger headline on two clean lines ("We build" / "AI marketing systems."), short eyebrow */
+.f13-hero-title { font-size: clamp(52px, 7.6vw, 112px); line-height: 0.98; max-width: none; margin: 1.5rem auto 1.5rem; }
+.f13-hero-title em { white-space: nowrap; }
+.f13-hero-badge { padding: 0; border: 0; background: none; }
+.f13-hero-badge .f13-badge-tag { height: 22px; padding: 0 9px; font-size: 9.5px; }
+@media (max-width: 640px) {
+  .f13-hero-title { font-size: 44px; }
+  .f13-hero-title em { white-space: normal; }
+}

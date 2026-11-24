@@ -74,9 +74,6 @@ const Guarantees = () => {
         <p className="f13-gx-support">
           Everything we run is monitored. If something breaks, we alert you within 4 business hours and fix it within 1 business day.
         </p>
-        <p className="f13-gx-check">
-          The terms are in your contract. The output is in your own accounts.
-        </p>
       </div>
     </section>
   );
