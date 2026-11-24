@@ -37,6 +37,25 @@
 .f13-g-n { display: block; font-family: var(--f13-mono); font-size: 12px; color: var(--f13-cobalt); margin-bottom: 2.5rem; }
 .f13-g .f13-h3 { font-size: 28px; font-weight: 300; margin-bottom: 0.75rem; color: var(--f13-ink); }
 
+/* Guarantees v2: fear -> promise -> penalty */
+.f13-gx-head { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 3rem; align-items: end; margin-bottom: 3rem; }
+.f13-gx-head .f13-h2 { margin-top: 1.1rem; }
+.f13-gx-lede { max-width: 440px; margin: 0 0 0.4rem; }
+.f13-gx-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.f13-gx { display: flex; flex-direction: column; padding: 1.6rem 1.6rem 1.5rem; border-radius: var(--f13-radius-card); background: var(--f13-white); }
+.f13-gx-n { font-family: var(--f13-mono); font-size: 12px; color: var(--f13-cobalt); }
+.f13-gx-title { margin: 2.25rem 0 0.9rem; font-family: var(--f13-serif); font-weight: 300; font-size: 30px; line-height: 1.1; letter-spacing: -0.015em; color: var(--f13-ink); }
+.f13-gx-promise { margin: 0 0 1.75rem; }
+.f13-gx-penalty { margin-top: auto; padding: 1rem 1.1rem; border-radius: 12px; background: var(--f13-bone); border-left: 2px solid var(--f13-cobalt); }
+.f13-gx-penalty-l { display: block; margin-bottom: 0.35rem; font-family: var(--f13-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--f13-cobalt); }
+.f13-gx-penalty p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--f13-ink); }
+.f13-gx-check { margin: 1.75rem 0 0; font-family: var(--f13-serif); font-style: italic; font-size: 19px; color: var(--f13-ink-60); }
+@media (max-width: 1024px) {
+  .f13-gx-head { grid-template-columns: 1fr; gap: 1.25rem; }
+  .f13-gx-grid { grid-template-columns: 1fr; }
+  .f13-gx-title { margin-top: 1.4rem; }
+}
+
 /* ---------- Step 4: final CTA ---------- */
 .f13-final { padding: 3rem 0 4rem; }
 .f13-final-card {

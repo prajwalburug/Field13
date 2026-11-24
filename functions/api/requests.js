@@ -33,7 +33,7 @@ export async function onRequestGet({ request, env }) {
          FROM votes v JOIN requests r ON r.id = v.request_id
         WHERE r.status = 'approved'
         ORDER BY v.created_at DESC
-        LIMIT 8`
+        LIMIT 30`
     ),
     env.DB.prepare(`SELECT request_id, intent FROM votes WHERE voter_hash = ?`).bind(voter)
   ]);

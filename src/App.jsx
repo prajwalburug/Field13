@@ -8,26 +8,27 @@ import './styles/f13-requests.css';
 import './styles/f13-how.css';
 import './styles/f13-systems.css';
 import './styles/f13-refine.css';
+import './styles/f13-system-pages.css';
+import './styles/f13-board.css';
+import './styles/f13-polish.css';
+import './styles/f13-home.css';
 import Nav from './components/layout/Nav';
-import Footer from './components/layout/Footer';
-import Hero from './components/f13/Hero';
-import Products from './components/f13/Products';
-import HowItWorks from './components/f13/HowItWorks';
-import Team from './components/f13/Team';
-import Guarantees from './components/f13/Guarantees';
-import FinalCta from './components/f13/FinalCta';
+import Home from './pages/Home';
 import Requests from './pages/Requests';
-import Agencies from './pages/Agencies';
-import UgcStudio from './pages/UgcStudio';
 import Brand from './pages/Brand';
-import About from './pages/About';
-import ProcessCheck from './pages/ProcessCheck';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { SHOW_VOTE } from './config';
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      document.querySelector(hash)?.scrollIntoView();
+      return;
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
   return null;
 }
 
@@ -38,26 +39,14 @@ function App() {
         <ScrollToTop />
         <Nav />
         <Routes>
-          <Route path="/" element={
-            <div>
-              <Hero />
-              <Products />
-              <HowItWorks />
-              <Team />
-              <Guarantees />
-              <FinalCta />
-              <Footer />
-            </div>
-          } />
-          <Route path="/about" element={<About />} />
-          <Route path="/agencies" element={<Agencies />} />
-          <Route path="/ugc" element={<UgcStudio />} />
+          <Route path="/" element={<Home />} />
           <Route path="/brand" element={<Brand />} />
-          <Route path="/requests" element={<Requests />} />
-          <Route path="/process-check" element={<ProcessCheck />} />
-          {/* Retired pages: send old links home instead of to a blank page */}
-          <Route path="/pricing" element={<Navigate to="/" replace />} />
-          <Route path="/insights/*" element={<Navigate to="/" replace />} />
+          <Route path="/requests" element={SHOW_VOTE ? <Requests /> : <Navigate to="/" replace />} />
+          {/* The site is one page now. Old links (systems, about, agencies, pricing, insights...) land on it. */}
+          <Route path="/agencies" element={<Navigate to="/#agencies" replace />} />
+          <Route path="/about" element={<Navigate to="/#founders" replace />} />
+          <Route path="/systems/*" element={<Navigate to="/#systems" replace />} />
+          <Route path="/ugc" element={<Navigate to="/#systems" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </>

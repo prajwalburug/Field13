@@ -9,8 +9,10 @@ export function mountHeroScene(container, { reducedMotion = false } = {}) {
   const width = () => container.clientWidth || 1;
   const height = () => container.clientHeight || 1;
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  // Points and sprites don't need MSAA, and 1.5x is sharp enough for them; both cut GPU cost a lot on retina screens.
+  const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+  const renderer = new THREE.WebGLRenderer({ antialias: dpr < 1.25, alpha: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(dpr);
   renderer.setSize(width(), height());
   renderer.setClearColor(0x000000, 0);
   container.appendChild(renderer.domElement);
@@ -171,10 +173,15 @@ export function mountHeroScene(container, { reducedMotion = false } = {}) {
   const clock = new THREE.Clock();
   let raf = 0;
   const tmp = new THREE.Vector3();
+  // The scene drifts slowly, so ~40fps looks identical to 60 and frees the main thread for scrolling.
+  const FRAME_S = 1 / 40;
+  let last = -1;
   const frame = () => {
     raf = requestAnimationFrame(frame);
     if (!visible || document.hidden) return;
     const t = clock.getElapsedTime();
+    if (t - last < FRAME_S) return;
+    last = t;
     pointMat.uniforms.uTime.value = t;
     root.rotation.y = t * 0.06;
     rings.forEach((r, i) => { r.rotation.y = t * (0.04 + i * 0.015) * (i % 2 ? -1 : 1); });

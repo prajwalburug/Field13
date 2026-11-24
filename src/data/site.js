@@ -31,16 +31,16 @@ export const modules = [
 
 export const guarantees = [
   {
-    name: 'Live by the date',
-    body: 'You get the go-live date before you sign. If the system is not live and passing its acceptance tests by then, we keep working for free until it is, and refund 20% of the build.'
+    name: 'No run fee until it is live',
+    body: 'The monthly fee starts when the system is live in your accounts and passing the agreed checks. If it takes longer, it costs us time, not you money.'
   },
   {
-    name: 'You hear it from us first',
-    body: 'Every agent and pipeline is traced and monitored. If one fails, we alert you within 4 business hours and restore it within 1 business day. If you spot a failure before we do, you get 25% off that month.'
+    name: 'It ships every month, or that month is free',
+    body: 'Your contract lists what the system delivers each month. If we miss it, you do not pay for that month.'
   },
   {
     name: 'You own everything',
-    body: 'Code, prompts, evals, data and dashboards live in your repo and your accounts. If you leave, you get the full handover, with runbooks, within 5 business days.'
+    body: 'Code, prompts, footage, data and dashboards live in your accounts. If you leave, you keep it all and get the full handover with runbooks.'
   }
 ];
 

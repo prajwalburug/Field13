@@ -61,6 +61,8 @@
 
 /* Partnership options (agencies) */
 .f13-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.f13-options-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.f13-options-3 .f13-h3 { font-size: 26px; }
 .f13-option { padding: 2rem 1.9rem; border-radius: var(--f13-radius-card); background: var(--f13-white); color: var(--f13-ink); display: flex; flex-direction: column; }
 .f13-option .f13-chip { align-self: flex-start; color: var(--f13-cobalt); border-color: rgba(14,42,143,0.25); }
 .f13-option .f13-h3 { margin-top: 1.25rem; font-size: 30px; font-weight: 300; }
@@ -75,6 +77,7 @@
 
 @media (max-width: 1100px) {
   .f13-tiers, .f13-cards-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .f13-options-3 { grid-template-columns: 1fr; }
 }
 @media (max-width: 860px) {
   .f13-banner { grid-template-columns: 1fr; gap: 1rem; }

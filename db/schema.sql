@@ -41,3 +41,19 @@ CREATE TABLE IF NOT EXISTS watchers (
   PRIMARY KEY (request_id, email)
 );
 CREATE INDEX IF NOT EXISTS idx_watchers_ip ON watchers (ip_hash, created_at);
+
+-- "Build with us": applications from AI marketers and growth leads.
+CREATE TABLE IF NOT EXISTS builders (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  name        TEXT    NOT NULL,
+  email       TEXT    NOT NULL,             -- never returned by any public API
+  linkedin    TEXT    NOT NULL,
+  role        TEXT    NOT NULL,             -- current role and company
+  experience  TEXT,                         -- '2-4' | '5-8' | '9+'
+  system      TEXT,                         -- what they want to build
+  pitch       TEXT    NOT NULL,             -- what they bring
+  status      TEXT    NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'call', 'in', 'pass')),
+  ip_hash     TEXT,                         -- salted hash, rate limiting only
+  created_at  TEXT    NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_builders_ip ON builders (ip_hash, created_at);

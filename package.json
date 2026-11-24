@@ -11,8 +11,10 @@
     "cf:db:remote": "wrangler d1 execute field13-requests --remote --file=db/schema.sql",
     "cf:migrate:local": "wrangler d1 execute field13-requests --local --file=db/migrations/0002_board_value.sql",
     "cf:migrate:remote": "wrangler d1 execute field13-requests --remote --file=db/migrations/0002_board_value.sql",
+    "cf:migrate:builders:local": "wrangler d1 execute field13-requests --local --file=db/migrations/0003_builders.sql",
+    "cf:migrate:builders:remote": "wrangler d1 execute field13-requests --remote --file=db/migrations/0003_builders.sql",
     "cf:dev": "vite build --mode cfdev && wrangler pages dev dist --port 8788",
-    "cf:deploy": "npm run build && wrangler pages deploy dist --project-name field13",
+    "cf:deploy": "vite build --mode staging && wrangler pages deploy dist --project-name field13",
     "cf:seed:local": "wrangler d1 execute field13-requests --local --file=db/seed.sql",
     "cf:seed:remote": "wrangler d1 execute field13-requests --remote --file=db/seed.sql"
   },

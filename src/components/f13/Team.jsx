@@ -2,11 +2,11 @@ const founders = [
   {
     name: 'Prajwal',
     role: 'Founder',
-    title: 'Builds AI marketing systems',
-    subtitle: 'And growth systems for outbound and lead‑gen',
+    title: 'Builds the creative engines',
+    subtitle: 'Hooks, UGC, edits and testing, wired into one system',
     photo: '/media/prajwal.jpg',
     alt: 'Portrait of Prajwal against a blue background',
-    lead: 'Works where marketing, sales and engineering usually hand off, and builds the system so they never have to.',
+    lead: 'Turns what your creators and editors make into a steady flow of tested ads, so the team spends its time on the work only it can do.',
     points: [
       { text: 'Finalist, AI Marketing Kombat (Season 1)', note: 'A UK competition where marketers solve brand briefs with AI, judged round by round. His final entry: a creative-performance dashboard whose AI summary checks every number it writes.' }
     ]

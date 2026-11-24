@@ -4,27 +4,19 @@ import Logo from '../ui/Logo';
 
 const columns = [
   {
-    title: 'Systems',
+    title: 'Field13',
     links: [
       { label: 'What we build', href: '/#systems' },
-      { label: 'How we work', href: '/#how' },
-      { label: 'AI UGC Studio', to: '/ugc' },
-      { label: 'White-label client platform', to: '/agencies' }
-    ]
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About', to: '/about' },
-      { label: 'Agencies', to: '/agencies' }
+      { label: 'How it works', href: '/#how' },
+      { label: 'Who runs it', href: '/#run' },
+      { label: 'What we need', href: '/#need' },
+      { label: 'For agencies', href: '/#agencies' }
     ]
   },
   {
     title: 'Get started',
     links: [
-      { label: 'Book a discovery call', ext: CAL_LINK },
-      { label: 'Vote on what we build next', to: '/requests' },
-      { label: 'Score your AI readiness', to: '/process-check' }
+      { label: 'Book a call', ext: CAL_LINK }
     ]
   }
 ];
@@ -38,7 +30,7 @@ const Footer = () => {
             <Link to="/" className="f13-logo" aria-label="Field13 home">
               <Logo />
             </Link>
-            <p>AI systems that ship your content, ads, outreach and reports. Built in your accounts, run by us, owned by you.</p>
+            <p>AI marketing systems for UGC, content, ads and outbound. Built around your team, in your accounts, owned by you.</p>
           </div>
           {columns.map((c) => (
             <div className="f13-footer-col" key={c.title}>
@@ -46,7 +38,6 @@ const Footer = () => {
               <ul>
                 {c.links.map((l) => (
                   <li key={l.label}>
-                    {l.to && <Link to={l.to}>{l.label}</Link>}
                     {l.href && <a href={l.href}>{l.label}</a>}
                     {l.ext && <a href={l.ext} target="_blank" rel="noopener noreferrer">{l.label}</a>}
                   </li>
@@ -57,7 +48,7 @@ const Footer = () => {
         </div>
         <div className="f13-footer-bottom">
           <span>© {new Date().getFullYear()} Field13</span>
-          <span>Engineered and run by Field13</span>
+          <span>Built and run by Field13</span>
         </div>
       </div>
     </footer>

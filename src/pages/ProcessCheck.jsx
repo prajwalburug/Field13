@@ -223,7 +223,7 @@ const ProcessCheck = () => {
               </div>
 
               <div className="process-guarantee">
-                Want the full picture? Book a discovery call. Discovery goes far deeper than this self-check and ends with the plan, a fixed price and a go-live date in writing.
+                Want the full picture? Book a discovery call. Discovery goes far deeper than this self-check and ends with the plan and a fixed price in writing.
               </div>
 
               <div className="process-nav" style={{ marginTop: 30 }}>

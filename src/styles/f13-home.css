@@ -1,0 +1,35 @@
+/* One-page home: small additions on top of the shared section styles. */
+.hm-cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.hm-system p { margin-bottom: 1.25rem; }
+.hm-parts { list-style: none; margin: auto 0 0; padding: 1rem 0 0; border-top: 1px solid var(--f13-ink-12); display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.hm-parts li { padding: 0.3rem 0.55rem; border-radius: 4px; background: var(--f13-bone); font-family: var(--f13-mono); font-size: 10.5px; letter-spacing: 0.03em; color: var(--f13-ink); }
+
+.hm-note { margin: 2rem 0 0; font-size: 15px; color: var(--f13-white-60, rgba(255,255,255,0.65)); }
+
+.hm-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.hm-agencies .f13-split-head { margin-bottom: 0; }
+
+@media (max-width: 1024px) {
+  .hm-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px) {
+  .hm-cards-3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .hm-steps { grid-template-columns: 1fr; }
+  .f13-options { grid-template-columns: 1fr; }
+}
+
+/* Guarantees: four promises in one row on wide screens */
+.f13-gx-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.f13-gx-grid-4 .f13-gx-title { font-size: 26px; }
+@media (max-width: 1180px) {
+  .f13-gx-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; row-gap: 1rem; }
+  .f13-gx-grid-4 .f13-gx { grid-row: auto; display: flex; flex-direction: column; }
+  .f13-gx-grid-4 .f13-gx-penalty { margin-top: auto; }
+}
+@media (max-width: 640px) {
+  .f13-gx-grid-4 { grid-template-columns: 1fr; }
+}

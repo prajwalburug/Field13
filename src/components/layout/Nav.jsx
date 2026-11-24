@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CAL_LINK } from '../../data/site';
 import Logo from '../ui/Logo';
 
+// One page, so the links are anchors. The only action is booking a call.
 const links = [
-  { to: '/#systems', label: 'Systems' },
-  { to: '/#how', label: 'How we work' },
-  { to: '/ugc', label: 'UGC Studio' },
-  { to: '/agencies', label: 'Agencies' },
-  { to: '/about', label: 'About' },
-  { to: '/requests', label: 'Vote', live: true }
+  { href: '/#systems', label: 'What we build' },
+  { href: '/#how', label: 'How it works' },
+  { href: '/#run', label: 'Who runs it' },
+  { href: '/#need', label: 'What we need' }
 ];
 
 const Nav = () => {
@@ -25,11 +24,7 @@ const Nav = () => {
 
         <nav className={`f13-nav-links${open ? ' is-open' : ''}`} aria-label="Main">
           {links.map((l) => (
-            l.to.startsWith('/#')
-              ? <a key={l.label} href={l.to} onClick={close}>{l.label}</a>
-              : <NavLink key={l.label} to={l.to} onClick={close} className={l.live ? 'f13-nav-vote' : undefined}>
-                  {l.live && <span className="f13-nav-live" aria-hidden="true" />}{l.label}
-                </NavLink>
+            <a key={l.label} href={l.href} onClick={close}>{l.label}</a>
           ))}
           <a href={CAL_LINK} className="f13-btn f13-btn-light f13-nav-cta-mobile" target="_blank" rel="noopener noreferrer" onClick={close}>
             Book a call

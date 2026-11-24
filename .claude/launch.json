@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "field13-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "5173", "--strictPort"],
+      "port": 5173
+    },
+    {
+      "name": "field13-api",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "cf:dev"],
+      "port": 8788
+    }
+  ]
+}

@@ -5,10 +5,10 @@ import FinalCta from '../components/f13/FinalCta';
 import Guarantees from '../components/f13/Guarantees';
 
 const disciplines = [
-  { name: 'AI engineering', body: 'Agent orchestration, retrieval, checks and guardrails. Sets the architecture on every engagement.', skills: 'LangGraph · LangChain · RAG · Evals' },
-  { name: 'GTM and data', body: 'Signals, enrichment, CRM and ad-platform integrations, scraping pipelines and the revenue model behind every dashboard.', skills: 'HubSpot · Clay · treg · Postgres' },
-  { name: 'Creative engineering', body: 'UGC and ad creative made by pipeline, so variants, captions and formats come from one system instead of an editing queue.', skills: 'Seedance · Remotion · Zernio' },
-  { name: 'Platform and product', body: 'Infrastructure, monitoring and cost controls in your cloud, plus the dashboards and tools your team actually uses.', skills: 'FastAPI · Next.js · Docker' }
+  { name: 'Creators', body: 'Finding, vetting and briefing creators who fit your brand, with every conversation and deal tracked in one place.', skills: 'Creator search · Outreach · Briefs' },
+  { name: 'Production', body: 'Hooks, scripts, UGC-style video, edits, captions and sizes from one pipeline, so editors spend their time on the cuts that need them.', skills: 'Seedance · Nano Banana · ElevenLabs · Remotion' },
+  { name: 'Posting and testing', body: 'Organic posts and paid tests on Meta and TikTok, launched as variants so every hook gets a fair test.', skills: 'Meta · TikTok · Zernio' },
+  { name: 'Scoreboard', body: 'Every ad tagged and ranked, tired ads flagged, and the next brief written from what won.', skills: 'Your ad accounts · Analytics · Claude' }
 ];
 
 const About = () => {
@@ -17,8 +17,8 @@ const About = () => {
       <PageHero
         tag="About"
         eyebrow="Who we are"
-        title={<>Plenty of teams have an AI demo.<br /><em>Few have one that runs every Monday.</em></>}
-        lede="Field13 gets it there and keeps it running. Two founders: one builds the systems, the other has spent the ad budgets."
+        title={<>Plenty of teams can make one AI ad.<br /><em>Few ship good ones every week.</em></>}
+        lede="Field13 builds the engine that gets you there, then runs it with you. Two founders: one builds the creative systems, the other has spent the ad budgets."
       />
 
       <Team />
@@ -30,7 +30,7 @@ const About = () => {
           <div className="f13-split-head">
             <div>
               <div className="f13-label">The system, by layer</div>
-              <h2 className="f13-h2">Agents, data, creative, infrastructure.<br /><em>One system on your account.</em></h2>
+              <h2 className="f13-h2">Creators, production, testing, learning.<br /><em>One system on your accounts.</em></h2>
             </div>
             <p className="f13-lede">Four layers, built to work together inside your accounts. When your scope grows, we extend the system instead of adding people you have to manage.</p>
           </div>

@@ -6,28 +6,28 @@ import { useEffect, useRef } from 'react';
  * Everything left of the cursor is done; everything right of it is the plan.
  * Scroll is written straight to the DOM in one rAF, so scrolling never re-renders React.
  *
- * Deliberately no durations or calendar dates: the go-live date is fixed in the contract.
+ * Deliberately no durations or calendar dates: the timeline depends on data access and client decisions, so only the price is fixed.
  * The motion is driven only by the reader's own scrolling, so it stays on under
  * prefers-reduced-motion; only eased transitions and glow are removed there (see CSS).
  */
 
 /* ---------- Geometry (SVG user units) ---------- */
 const X0 = 44;           // kick-off
-const X_SCOPED = 210;    // discovery done: price + date fixed
+const X_SCOPED = 210;    // discovery done: plan + price fixed
 const X_LIVE = 540;      // live
 const X1 = 700;          // end of view (run continues)
 const LANE = 182;
 const TRACKS = [126, 182, 238];
 const GATES = [
-  { x: 322, label: 'evals' },
+  { x: 322, label: 'checks' },
   { x: 392, label: 'acceptance' },
   { x: 462, label: 'handover' }
 ];
 // Discovery inputs. `keep` survives the audit; the rest are dropped where they end.
 const INPUTS = [
-  { y: 70, group: 'stack', end: 104 }, { y: 98, keep: true }, { y: 126, end: 132 },
-  { y: 162, group: 'data', end: 140 }, { y: 190, keep: true },
-  { y: 226, group: 'funnel', keep: true }, { y: 254, end: 118 }, { y: 282, end: 146 }
+  { y: 70, group: 'ads', end: 104 }, { y: 98, keep: true }, { y: 126, end: 132 },
+  { y: 162, group: 'creative', end: 140 }, { y: 190, keep: true },
+  { y: 226, group: 'results', keep: true }, { y: 254, end: 118 }, { y: 282, end: 146 }
 ];
 // Run: steady signal inside the agreed range, one excursion caught and corrected.
 const SIGNAL = (() => {
@@ -45,16 +45,16 @@ const MONTHS = [602, 646, 690];
 
 const STEPS = [
   {
-    n: '01', name: 'Discovery', time: 'Price + date in writing',
-    body: 'We go through your stack, data and funnel, cut the ideas that won’t pay back, and pick the one system worth building first. You get a fixed price and a go-live date in writing before you commit to anything.'
+    n: '01', name: 'Discovery', time: 'Plan + price in writing',
+    body: 'We look at your ads, creative, accounts and results, cut the ideas that won’t pay back, and pick the one system worth building first. You get the plan and a fixed price in writing before you commit to anything.'
   },
   {
-    n: '02', name: 'Build', time: 'Live on the agreed date',
-    body: 'We build it inside your accounts: the agents, the creative pipeline, the dashboard. Nothing goes live until it passes checks you’ve signed off.'
+    n: '02', name: 'Build', time: 'No run fee until live',
+    body: 'We set it up inside your accounts: the creative pipeline, the posting, the scoreboard. Nothing goes live until it passes checks you’ve signed off.'
   },
   {
     n: '03', name: 'Run', time: 'Every month',
-    body: 'We watch it, fix it before you notice, keep shipping new creative and improvements, and send one report on the three numbers you care about.'
+    body: 'We watch it, fix it before you notice, keep shipping new creative, and report on the numbers you care about.'
   }
 ];
 const stepAt = (x) => (x < X_SCOPED ? 0 : x < X_LIVE ? 1 : 2);
@@ -62,7 +62,7 @@ const stepAt = (x) => (x < X_SCOPED ? 0 : x < X_LIVE ? 1 : 2);
 /** What the cursor readout says at position x. States, not dates. */
 const stateAt = (x) => {
   if (x < X_SCOPED - 14) return 'DISCOVERY · AUDIT';
-  if (x < X_SCOPED + 14) return 'PRICE + DATE FIXED';
+  if (x < X_SCOPED + 14) return 'PLAN + PRICE FIXED';
   if (x < X_LIVE - 6) return `BUILD · CHECKS ${GATES.filter((g) => x >= g.x).length}/${GATES.length}`;
   if (x < MONTHS[0]) return 'LIVE';
   return `RUN · MONTH ${MONTHS.filter((m) => x >= m).length}`;
@@ -95,14 +95,14 @@ const Schematic = () => (
     <g className="s-select">
       <rect x={X_SCOPED - 6} y={LANE - 6} width="12" height="12" transform={`rotate(45 ${X_SCOPED} ${LANE})`} />
       <rect className="s-tagbox" x={X_SCOPED - 86} y="84" width="172" height="22" rx="3" />
-      <text x={X_SCOPED} y="99" textAnchor="middle">fixed price · go-live date</text>
+      <text x={X_SCOPED} y="99" textAnchor="middle">plan · fixed price</text>
       <path className="s-leader" d={`M${X_SCOPED},106 V${LANE - 10}`} />
     </g>
 
     {TRACKS.map((y, i) => (
       <g key={y} className="s-track">
         <path d={trackPath(y)} />
-        <text x="270" y={y - 8}>{['agents', 'creative pipelines', 'dashboards'][i]}</text>
+        <text x="270" y={y - 8}>{['creators', 'creative', 'scoreboard'][i]}</text>
       </g>
     ))}
     {GATES.map((g) => (
@@ -132,7 +132,7 @@ const Schematic = () => (
 
     <g className="s-axis">
       <path d={`M${X0},300 H${X1}`} />
-      {[[X0, 'Kick-off', 'first call', 'start'], [X_SCOPED, 'Price + date', 'fixed in writing', 'middle'], [X_LIVE, 'Live', 'on the agreed date', 'end']].map(([x, a, b, anchor]) => (
+      {[[X0, 'Kick-off', 'first call', 'start'], [X_SCOPED, 'Plan + price', 'fixed in writing', 'middle'], [X_LIVE, 'Live', 'run fee starts', 'end']].map(([x, a, b, anchor]) => (
         <g key={a}>
           <path d={`M${x},296 V304`} />
           <text x={x} y="322" textAnchor={anchor} className="s-date">{a}</text>
@@ -207,12 +207,12 @@ const HowItWorks = () => {
           <div>
             <div className="f13-label">How we work</div>
             <h2 className="f13-h2">
-              Most AI pilots die after the demo.<br />
-              <em>Ours go live on a date you get before you sign.</em>
+              Most creative pipelines stall after the first batch.<br />
+              <em>Ours ship every month, or that month is free.</em>
             </h2>
           </div>
           <p className="f13-lede">
-            Pilots break on real data, and then nobody owns the fix. We take one system live in three steps, then stay on to keep it running.
+            New ad ideas are easy. Making, shipping and testing them every week is where teams run out of hands. We set up one system in three steps, then stay on to run it.
           </p>
         </div>
       </div>
@@ -239,7 +239,7 @@ const HowItWorks = () => {
                 className="hw-svg"
                 viewBox="0 0 720 366"
                 role="img"
-                aria-label="Engagement path: discovery narrows your stack, data and funnel to one system with a fixed price and go-live date; the build passes evals, acceptance and handover checks before going live; then we run it, catch issues, and report monthly."
+                aria-label="Engagement path: discovery narrows your stack, data and funnel to one system with a plan and a fixed price; the build passes evals, acceptance and handover checks before going live; then we run it, catch issues, and report monthly."
               >
                 <defs>
                   <pattern id="hw-dots" width="14" height="14" patternUnits="userSpaceOnUse">
@@ -264,7 +264,6 @@ const HowItWorks = () => {
                   </g>
                 </g>
               </svg>
-              <figcaption className="hw-caption">Every engagement follows this path. Your price and go-live date are fixed in writing when Discovery ends.</figcaption>
             </figure>
           </div>
         </div>

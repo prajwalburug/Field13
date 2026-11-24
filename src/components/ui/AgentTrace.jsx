@@ -1,19 +1,19 @@
 const steps = [
-  { t: '00.42s', label: 'Signal', detail: 'Head of Growth at target account engaged with a competitor post', tag: 'treg' },
-  { t: '01.87s', label: 'Enrich', detail: 'Firmographics, tech stack and open roles pulled', tag: 'clay' },
-  { t: '03.10s', label: 'Score', detail: 'ICP fit 0.86 · intent high', tag: 'langgraph' },
-  { t: '05.64s', label: 'Draft', detail: 'Personalised first touch, grounded in 3 sources', tag: 'claude' },
-  { t: '06.02s', label: 'Evaluate', detail: '18 / 18 checks passed · no PII · on-brand', tag: 'evals' },
-  { t: '06.05s', label: 'Approve', detail: 'Waiting for a human in HubSpot', tag: 'hubspot', pending: true }
+  { t: '09:02', label: 'Pull', detail: '38 ads scaling in your niche, transcripts and hooks extracted', tag: 'ad library' },
+  { t: '09:04', label: 'Hooks', detail: '10 hooks drafted in your brand voice, best 4 picked', tag: 'brand voice' },
+  { t: '09:16', label: 'Generate', detail: '4 lip-synced takes, same presenter, same voice', tag: 'video' },
+  { t: '09:29', label: 'Edit', detail: 'Demo b-roll, captions and music, cut to 9:16 and 4:5', tag: 'edit' },
+  { t: '09:31', label: 'Check', detail: '12 / 12 checks passed · AI label on · on-brand', tag: 'brand check' },
+  { t: '09:31', label: 'Approve', detail: 'Waiting for you, then launched as 4 test variants', tag: 'meta · tiktok', pending: true }
 ];
 
-/** Product-style panel showing one agent run. Illustrative only. */
+/** Product-style panel showing one creative-engine run. Illustrative only. */
 const AgentTrace = () => {
   return (
-    <div className="ui-panel agent-trace" role="img" aria-label="Illustration of an agent run trace: signal, enrich, score, draft, evaluate, approve">
+    <div className="ui-panel agent-trace" role="img" aria-label="Illustration of a creative engine run: pull, hooks, generate, edit, check, approve">
       <div className="ui-panel-bar">
         <span className="ui-dots"><i /><i /><i /></span>
-        <span className="ui-panel-title">outbound-agent · run 4821</span>
+        <span className="ui-panel-title">creative-engine · run 4821</span>
         <span className="ui-badge ui-badge-live">live</span>
       </div>
       <ol className="trace-steps">
@@ -32,8 +32,8 @@ const AgentTrace = () => {
         ))}
       </ol>
       <div className="ui-panel-foot">
-        <span>traced in Langfuse</span>
-        <span>$0.014 · 6.1s</span>
+        <span>every step logged</span>
+        <span>4 clips · ready to test</span>
       </div>
     </div>
   );

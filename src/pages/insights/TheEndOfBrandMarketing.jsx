@@ -53,8 +53,8 @@ const TheEndOfBrandMarketing = () => {
           <p>FIELD13 builds that infrastructure.</p>
         </div>
         <div className="article-cta">
-          <p>If your CRM is not producing the trust you need, start with a free Process Check. 30 minutes. 3 fixes guaranteed.</p>
-          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book your free Process Check →</a>
+          <p>If your AI pilots are not reaching production, book a 30-minute call with an engineering lead. We will tell you which system to build first.</p>
+          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book a discovery call →</a>
         </div>
       </div>
     </article>

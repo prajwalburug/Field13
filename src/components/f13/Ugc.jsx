@@ -10,9 +10,8 @@ const pipeline = [
 ];
 
 const stats = [
-  { v: '$4–5', l: 'per finished clip, after setup' },
-  { v: '$100–200', l: 'creator fee per video' },
-  { v: '4+', l: 'hook variants per run' }
+  { v: '4+', l: 'hook variants per run' },
+  { v: '1 → 4+', l: 'ads to test from one creator video' }
 ];
 
 const PhoneVideo = () => {
@@ -57,10 +56,10 @@ const Ugc = () => {
         <div className="f13-ugc-copy">
           <div className="f13-label">AI UGC Studio</div>
           <h2 className="f13-h2">
-            UGC ads for $4–5 a clip.<br /><em>Not $100–200 a creator.</em>
+            Every creator video,<br /><em>turned into four ads to test.</em>
           </h2>
           <p className="f13-lede">
-            A creator usually sends one video, a week later. One run of our pipeline gives you four hooks to test the same day. It's built in your accounts, under your brand, and the per-clip cost starts once your presenter is set up.
+            Creator footage is your best raw material. One run of the pipeline turns it, or an AI presenter, into four hooks to test the same day, captioned and sized. It's built in your accounts, under your brand.
           </p>
 
           <ol className="f13-pipeline">

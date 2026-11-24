@@ -43,13 +43,13 @@ const SignalInANoisyMarket = () => {
           <h2 className="article-section-head">FIELD13 Perspective</h2>
           <p>Becoming a signal is not a one-time effort. It is a loop that strengthens with each cycle. Research what your market is talking about. Position yourself in that conversation. Turn your position into narrative. Publish where your audience already is. Distribute to the amplifiers who will carry your message. Each cycle builds trust. Each cycle generates more demand than the last.</p>
 
-          <p>At FIELD13 RevArc, the same principle applies to revenue systems. A CRM that compounds trust is not configured once and abandoned. It is designed around how your team sells, built with the right automation, and refined as the business grows.</p>
+          <p>At FIELD13, the same principle applies to revenue systems. A CRM that compounds trust is not configured once and abandoned. It is designed around how your team sells, built with the right automation, and refined as the business grows.</p>
 
           <p>In a noisy market, the winning strategy is not to shout louder. It is to become the thing the market listens for.</p>
         </div>
         <div className="article-cta">
-          <p>If your CRM is not producing the trust you need, start with a free Process Check. 30 minutes. 3 fixes guaranteed.</p>
-          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book your free Process Check →</a>
+          <p>If your AI pilots are not reaching production, book a 30-minute call with an engineering lead. We will tell you which system to build first.</p>
+          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book a discovery call →</a>
         </div>
       </div>
     </article>
