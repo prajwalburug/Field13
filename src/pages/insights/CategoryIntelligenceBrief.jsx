@@ -129,7 +129,7 @@ const CategoryIntelligenceBrief = () => {
               The companies that own the narrative rarely have the best product. They have the clearest point of view.
             </p>
             <p>
-              At FIELD13 RevArc, we apply this framework at depth: competitor narrative audits, conversation analysis, and positioning that defines how you show up. Same structured thinking, applied to revenue systems.
+              At FIELD13, we apply this framework at depth: competitor narrative audits, conversation analysis, and positioning that defines how you show up. Same structured thinking, applied to revenue systems.
             </p>
             <p>
               If you want this done for your business.
@@ -139,10 +139,10 @@ const CategoryIntelligenceBrief = () => {
       </article>
       <section className="cta-section">
         <div className="container container-narrow">
-          <h2 className="cta-headline">Book your <em>free Process Check</em></h2>
-          <p className="cta-sub">30 minutes. 3 fixes guaranteed. No pitch, no commitment.</p>
+          <h2 className="cta-headline">Book a <em>discovery call</em></h2>
+          <p className="cta-sub">30 minutes with an engineering lead. You leave knowing which system to build first.</p>
           <div className="cta-actions">
-            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book your free Process Check →</a>
+            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book a discovery call →</a>
           </div>
         </div>
       </section>

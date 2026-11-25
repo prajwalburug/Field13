@@ -1,0 +1,297 @@
+/* =========================================================
+   Refinement pass (design-taste round 1).
+   Loaded last. Only tightens what exists: no new colors, fonts or sections.
+   ========================================================= */
+
+/* ---------- Muted text contrast (round 3) ----------
+   White at 42% on graphite measured about 3.9:1, under AA for the small mono it
+   is used on (footer titles, step numbers, copyright). 50% lands about 5:1. */
+:root { --f13-white-40: rgba(255,255,255,0.5); }
+
+/* ---------- How we work: pinned stage sits under the fixed nav ----------
+   The stage was centred in the full viewport, so the 65px nav ate into the top
+   and left a heavier empty band at the bottom. Centre it in the visible area. */
+.hw-stage { top: 65px; height: calc(100vh - 65px); height: calc(100svh - 65px); }
+
+/* Diagram labels: one step larger and the unreached "plan" layer a little
+   brighter, so the blueprint reads instead of disappearing into graphite. */
+.hw-plan { --text: rgba(255,255,255,0.32); }
+.hw-done { --text: rgba(255,255,255,0.86); }
+.hw-svg text { font-size: 10.5px; }
+.s-phase text { font-size: 10.5px; }
+.s-group { font-size: 9.5px !important; }
+.s-select text { font-size: 10.5px; }
+.s-track text, .s-gate text { font-size: 10px; }
+/* Axis sub-labels stay at 9px: "on the agreed date" and "report + improve" share the right end. */
+.s-axis text { font-size: 9px; }
+.s-band text, .s-incident text { font-size: 9.5px; }
+.s-axis .s-date { font-size: 11.5px; }
+/* Labels get a graphite halo, so lines run behind the text instead of through it. */
+.hw-svg text { paint-order: stroke fill; stroke: var(--f13-graphite); stroke-width: 4px; stroke-linejoin: round; }
+.hw-svg .hw-readout { stroke: none; }
+.hw-caption { font-size: 11px; color: var(--f13-white-60); text-wrap: pretty; }
+
+/* Phones: the 720-unit drawing renders about 335px wide, so small labels shrink
+   to ~5px. Keep only the phase headers and the LIVE marker, sized to read;
+   the step list under it carries the detail. */
+@media (max-width: 560px) {
+  .hw-svg text, .s-axis .s-date, .s-select text, .hw-readout, .hw-readout-box { display: none; }
+  .s-phase text { display: inline; font-size: 19px; letter-spacing: 0.08em; }
+  .s-live text { display: inline; font-size: 17px; letter-spacing: 0.12em; }
+}
+
+/* ---------- What we build: agency card ----------
+   The client window was cropped by the card's bottom edge. Show it as a whole,
+   floating window with even insets, and give the heading section-level weight. */
+.wb-agency-visual .f13-pv-cobalt { align-items: center; padding: 2rem 2.25rem; }
+.wb-agency-visual .f13-mini-window { border-radius: 10px; padding-bottom: 8px; box-shadow: 0 24px 48px -20px rgba(0,0,40,0.55); }
+.wb-agency-copy { justify-content: center; }
+.wb-agency-copy .f13-h3 { font-size: clamp(30px, 2.6vw, 36px); line-height: 1.1; }
+@media (max-width: 960px) {
+  .wb-agency-visual .f13-pv-cobalt { padding: 1.75rem 1.25rem; }
+}
+
+/* ---------- Who we are: role line ----------
+   The second role line rendered as grey mono caps under the blue mono caps and
+   read as a broken style. Keep the blue mono title, make the follow-on a quiet sans line. */
+.f13-person-subtitle {
+  margin-top: 0.4rem; font-family: var(--f13-sans); font-size: 13px; letter-spacing: 0;
+  text-transform: none; line-height: 1.45; color: var(--f13-white-60);
+}
+
+/* ---------- Who we are: heading and portraits (round 3) ----------
+   Same label + heading rhythm as the other sections. The two portraits were shot
+   differently (studio blue vs warm candid); one monochrome grade makes them a pair,
+   and color comes back on hover. */
+.f13-team-head .f13-h2 { margin: 1.1rem 0 0; }
+.f13-person-photo img { filter: grayscale(1) contrast(1.06) brightness(0.97); transition: filter 0.5s ease; }
+@media (hover: hover) {
+  .f13-person:hover .f13-person-photo img { filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .f13-person-photo img { transition: none; }
+}
+
+/* ---------- How we work: trim the empty tail after the pin (round 3) ----------
+   The stage centres about 560px of content in the viewport, so when the pin
+   releases the sheet ends with an empty band. Pull the sheet's end up by that
+   spare half, never into the content (clamped at 0 on short screens). */
+@media (min-width: 961px) {
+  /* flow-root keeps the negative margin inside the sheet (no collapse into the
+     gap before the next sheet); overflow: clip on the sheet trims the spare band. */
+  .hw.f13-sheet { display: flow-root; }
+  .hw-track { margin-bottom: min(0px, calc((665px - 100svh) / 2)); }
+}
+
+/* ---------- How we work on tablet and phone: caption after the steps (round 3) ----------
+   The caption sat between the diagram and the step list. Let the figure's children
+   join the stage grid so the order reads diagram, steps, caption. */
+@media (max-width: 960px) {
+  .hw-figure { display: contents; }
+  .hw-svg { order: -1; }
+  .hw-caption { order: 1; margin-top: 0; }
+}
+
+/* ---------- How we work on tablet and phone: no pin, no diagram (round 4) ----------
+   At this width the 720-unit drawing can't be read and the pin costs about three
+   screens of scrolling for three short steps. Show the steps as an open list;
+   the caption follows. Desktop keeps the pinned diagram. */
+@media (max-width: 960px) {
+  .hw.f13-sheet { padding-bottom: 4.5rem; }
+  .hw .f13-how-head { margin-bottom: 2.5rem; }
+  .hw-track { height: auto; }
+  .hw-stage { position: static; height: auto; display: block; }
+  .hw-svg, .hw-progress { display: none; }
+  .hw-steps { padding-left: 0; }
+  .hw-steps .hw-step { padding: 1.25rem 0; }
+  .hw-steps .hw-step .hw-step-row { opacity: 1; }
+  .hw-steps .hw-step .hw-step-name { color: #fff; }
+  .hw-steps .hw-step .hw-step-n { color: var(--f13-white-60); }
+  .hw-steps .hw-step .hw-step-time { color: var(--f13-white-60); }
+  .hw-steps .hw-step .hw-step-body { grid-template-rows: 1fr; }
+  .hw-steps .hw-step .hw-step-body > p { opacity: 1; padding-top: 0.6rem; }
+  .hw-stage-grid { gap: 0; }
+  .hw-caption { margin-top: 0.75rem; }
+}
+
+/* ---------- How we work on desktop: intro sits close to the stage (round 4) ----------
+   The stage centres ~560px of content in the viewport, which left a tall empty band
+   between the intro and the steps before the pin starts. Pull the track up by that
+   spare space, keeping a 64px gap, never below 0 on short screens. */
+@media (min-width: 961px) {
+  .hw-track { margin-top: min(0px, calc((560px - 100svh) / 2 + 64px)); }
+}
+
+/* ---------- Diagram color: cobalt-led (round 4) ----------
+   Red crosses on every dropped idea and green labels pulled the eye in three
+   directions. Dropped ideas become neutral; green stays only on the passed-check
+   squares; labels read in bone. The red incident marker stays: it is the one alarm. */
+.hw-done .s-drop .s-x { stroke: rgba(255,255,255,0.45); }
+.hw-done .s-gate text, .hw-done .s-incident text { fill: var(--text); }
+
+/* ---------- Founder cards: balanced pair (round 4) ----------
+   Equal-height cards, the photo fills the card's height, and the proof list sits on
+   the bottom edge of both, so the lighter card no longer looks unfinished. */
+@media (min-width: 641px) {
+  .f13-person { align-items: stretch; }
+  .f13-person-photo { aspect-ratio: auto; height: 100%; min-height: 250px; }
+  .f13-person-body { display: flex; flex-direction: column; }
+}
+/* Round 5: the proof list follows the bio directly (pinning it to the bottom left
+   a dead band in the shorter card), and the role sub-line reads at body-muted size. */
+.f13-person-subtitle { font-size: 13.5px; }
+
+/* ---------- Systems to Agencies (round 5) ----------
+   The links sat 56px above the Agencies card, so it read as an attachment to the
+   table. Give the card its own beat. */
+.wb-foot { margin-bottom: 5.5rem; }
+@media (max-width: 960px) { .wb-foot { margin-bottom: 3.5rem; } }
+
+/* ---------- Built-with strip (round 5) ----------
+   Softer edge fade so names dissolve instead of being chopped; on phones the
+   label sits inline as on desktop and the names shrink so 3+ show at once. */
+.f13-marquee {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+}
+@media (max-width: 640px) {
+  .f13-builton { grid-template-columns: auto minmax(0, 1fr); gap: 1rem; }
+  .f13-marquee-name { font-size: 16px; }
+  .f13-builton .f13-marquee-row li { padding: 0 0.85rem; }
+  .f13-marquee-layer { display: none; }
+}
+
+/* ---------- Footer on phones (round 5) ----------
+   "Get started" sat alone in half a row and its links wrapped; give it the full
+   row. The bottom bar stacks instead of running edge to edge. */
+@media (max-width: 640px) {
+  .f13-footer-top { row-gap: 2rem; }
+  .f13-footer-col:last-child { grid-column: 1 / -1; }
+  .f13-footer-bottom { flex-direction: column; gap: 0.5rem; }
+}
+
+/* ---------- Guarantees: no counters (round 4) ----------
+   The 01/02/03 numbers added nothing; the titles lead the cards now. */
+.f13-g { padding-top: 2rem; }
+.f13-g .f13-h3 { margin-top: 0; }
+
+/* ---------- How we work + Founders: one dark sheet (round 6) ----------
+   Two graphite slabs with a 12px black seam read as a rendering glitch. Join them:
+   square the seam, close the gap, and mark the change of topic with a hairline
+   inside the content width. */
+.hw.f13-sheet { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.hw.f13-sheet + .f13-team.f13-sheet { margin-top: 0; padding-top: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
+.hw + .f13-team > .f13-wrap::before {
+  content: ""; display: block; height: 1px; background: var(--f13-white-12); margin-bottom: 6.5rem;
+}
+@media (max-width: 960px) {
+  .hw + .f13-team > .f13-wrap::before { margin-bottom: 4.5rem; }
+}
+
+/* ---------- Final CTA: use the whole panel (round 6) ----------
+   All the content sat in the left 45% of a full-width cobalt slab. On desktop the
+   heading takes the left column at a larger size; the lede and buttons sit in a
+   right column, bottom-aligned with the heading's last line. */
+@media (min-width: 961px) {
+  .f13-final-card-solo { padding: 4.5rem 4rem; }
+  .f13-final-card-solo .f13-final-copy {
+    max-width: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto auto; column-gap: 4.5rem;
+  }
+  .f13-final-copy .f13-label { grid-column: 1 / -1; grid-row: 1; }
+  .f13-final-copy .f13-h2 { grid-column: 1; grid-row: 2 / 5; align-self: end; margin: 1.25rem 0 0; font-size: clamp(40px, 4.2vw, 58px); line-height: 1.04; text-wrap: balance; }
+  .f13-final-copy .f13-h2 em { display: inline-block; text-wrap: balance; }
+  .f13-final-copy .f13-lede { grid-column: 2; grid-row: 3; margin: 0; max-width: 40ch; }
+  .f13-final-copy .f13-actions { grid-column: 2; grid-row: 4; margin-top: 1.75rem; }
+}
+
+/* =========================================================
+   Inner pages (Agencies, UGC Studio, About): pass 1
+   ========================================================= */
+
+/* Final CTA, all pages: the heading took half the panel and set in four lines.
+   Give it the full width (two lines), then the lede and the buttons side by side. */
+@media (min-width: 961px) {
+  .f13-final-card-solo .f13-final-copy { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto auto; column-gap: 4rem; align-items: end; }
+  .f13-final-copy .f13-label { grid-column: 1 / -1; grid-row: 1; }
+  .f13-final-copy .f13-h2 { grid-column: 1 / -1; grid-row: 2; align-self: start; margin: 1.25rem 0 1.75rem; max-width: 22ch; }
+  .f13-final-copy .f13-h2 em { display: inline; }
+  .f13-final-copy .f13-lede { grid-column: 1; grid-row: 3; }
+  .f13-final-copy .f13-actions { grid-column: 2; grid-row: 3; margin-top: 0; flex-wrap: nowrap; }
+}
+@media (max-width: 960px) {
+  .f13-final-copy .f13-h2 { text-wrap: balance; }
+  .f13-final-copy .f13-h2 em { display: inline-block; text-wrap: balance; }
+}
+
+/* Page hero badge on phones: the cobalt tag broke into two lines ("UGC / STUDIO"). */
+.f13-badge-tag { white-space: nowrap; flex: none; }
+
+/* Primary buttons on light sheets: one cobalt everywhere, no coloured glow on bone/white
+   (it read as a muddy halo). */
+.f13-sheet-bone .f13-btn-blue { background: var(--f13-cobalt-2); box-shadow: 0 1px 2px rgba(14,14,14,0.12); }
+.f13-sheet-bone .f13-btn-blue:hover { background: #2448D8; }
+
+/* Four-up cards (Agencies, About): titles that wrap pushed body text down in some
+   cards only; reserve two lines. Tighter index-to-title gap. Graphite cards get a
+   visible edge. */
+@media (min-width: 1025px) {
+  #leverage .f13-cards-4 .f13-card .f13-h3 { min-height: 2.3em; }
+}
+.f13-card-n { margin-bottom: 1.25rem; }
+.f13-sheet-graphite .f13-card { border-color: rgba(255,255,255,0.14); }
+
+/* About, layer cards: the tool list was ink on graphite (about 1.2:1, invisible). */
+.f13-sheet-graphite .f13-card-skills {
+  color: var(--f13-white-60); border-top: 1px solid var(--f13-white-12); margin-top: auto; padding-top: 0.9rem;
+  font-size: 10px; letter-spacing: 0.01em; text-wrap: balance;
+}
+.f13-sheet-graphite .f13-card p { margin-bottom: 1.1rem; }
+
+/* UGC Studio on tablet/phone: heading and pipeline first, the example video after,
+   instead of opening the sheet on a cropped phone. Stats as rows, numerals unbroken. */
+@media (max-width: 1024px) {
+  .f13-ugc-grid .f13-phone { order: 2; }
+}
+.f13-ugc-stat-v { white-space: nowrap; }
+@media (max-width: 640px) {
+  .f13-ugc-stats { grid-template-columns: 1fr; gap: 0.6rem; }
+  .f13-ugc-stats > div { flex-direction: row; align-items: baseline; gap: 1rem; padding: 0.9rem 1.1rem; }
+  .f13-ugc-stat-v { font-size: 28px; min-width: 7.6rem; }
+}
+/* Agencies option cards: "Refer a client" is one line, the others two, so card 03's
+   body sat ~38px higher. Reserve two title lines on desktop so every body starts level. */
+@media (min-width: 1025px) {
+  .f13-options-3 .f13-option .f13-h3 { min-height: 2.3em; }
+}
+
+/* Phone caption: lowest-contrast text on the page; lift it to the muted ink. */
+.f13-phone figcaption { font-size: 10.5px; color: rgba(14,14,14,0.62); }
+
+/* Page hero titles: balanced lines so the italic line doesn't strand a word ("later."). */
+.f13-page-hero .f13-display { text-wrap: balance; }
+.f13-page-hero .f13-display em { display: inline-block; text-wrap: balance; }
+
+/* ---------- Primary button on black ----------
+   Deep cobalt on pure black carried less weight than the outlined secondary.
+   Use the brighter cobalt so the primary action leads. */
+.f13-sheet-black .f13-btn-blue { background: var(--f13-cobalt-2); }
+.f13-sheet-black .f13-btn-blue:hover { background: #2448D8; }
+
+/* ---------- Nav ----------
+   At 78% black the frosted bar blended to a muddy grey over the bone sheets.
+   Keep it one consistent black bar everywhere. */
+.f13-nav { background: rgba(0,0,0,0.92); }
+
+/* ---------- Hero eyebrow on phones ----------
+   When the eyebrow wraps, pin the status dot to the first line instead of centring it. */
+@media (max-width: 560px) {
+  .f13-hero-eyebrow { align-items: flex-start; }
+  .f13-hero-dot { flex: none; margin-top: 0.35em; }
+}
+
+/* ---------- Hero trace card on phones ----------
+   The run title was truncated with an ellipsis; drop the window dots so it fits. */
+@media (max-width: 560px) {
+  .f13-hero-panel .ui-dots { display: none; }
+}

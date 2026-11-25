@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Footer from '../components/layout/Footer';
+import PageHero from '../components/f13/PageHero';
 
 const QUESTIONS = [
   { dim: 'Lead Response', q: 'How fast does someone follow up on a new lead?', opts: [
@@ -121,20 +122,15 @@ const ProcessCheck = () => {
 
   return (
     <>
-      <section className="hero process-hero">
-        <div className="container container-narrow">
-          <div className="section-label">Free self-assessment</div>
-          <h1 className="hero-headline mission-headline">
-            Run your own <em>Process Check.</em>
-          </h1>
-          <p className="hero-sub" style={{ maxWidth: 520 }}>
-            10 questions, 5 dimensions. The same scorecard we use on every client call. Your score and 3 fixes land in your inbox the moment you finish.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        tag="Free"
+        eyebrow="AI readiness self-assessment"
+        title={<>Score your <em>AI readiness.</em></>}
+        lede="10 questions across 5 dimensions. The same scorecard we start every Discovery with. Your score and three fixes land in your inbox the moment you finish."
+      />
 
-      <section style={{ paddingTop: 0 }}>
-        <div className="container container-narrow">
+      <section className="f13-sheet f13-sheet-bone f13-quiz">
+        <div className="f13-wrap f13-quiz-wrap">
           <div className="process-progress">
             {Array.from({ length: progressTotal }).map((_, i) => (
               <div key={i} className={`process-prog-seg${i < progressDone ? ' done' : ''}`} />
@@ -200,7 +196,7 @@ const ProcessCheck = () => {
               <div className="process-shell">
                 <div className="process-score-top">
                   <div className={`process-score-num ${scoreClass(results.overall)}`}>{results.overall}</div>
-                  <div className="process-score-label">Your Process Check score / 100</div>
+                  <div className="process-score-label">Your readiness score / 100</div>
                 </div>
                 <div className="process-score-body">
                   {DIMS.map((d) => (
@@ -227,13 +223,13 @@ const ProcessCheck = () => {
               </div>
 
               <div className="process-guarantee">
-                3 fixes or it is on us -- book the full call and we will go deeper than this self-check can, with a written report in 24 hours.
+                Want the full picture? Book a discovery call. Discovery goes far deeper than this self-check and ends with the plan and a fixed price in writing.
               </div>
 
               <div className="process-nav" style={{ marginTop: 30 }}>
                 <span></span>
                 <a href="https://cal.com/field13-r657gn/45min" className="process-book" target="_blank" rel="noopener noreferrer">
-                  Book your free Process Check &rarr;
+                  Book a discovery call &rarr;
                 </a>
               </div>
             </div>

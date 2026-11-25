@@ -1,30 +1,53 @@
 import './styles/globals.css';
+import './styles/premium.css';
+import './styles/f13.css';
+import './styles/f13-sections.css';
+import './styles/f13-pages.css';
+import './styles/f13-content.css';
+import './styles/f13-requests.css';
+import './styles/f13-how.css';
+import './styles/f13-systems.css';
+import './styles/f13-refine.css';
+import './styles/f13-system-pages.css';
+import './styles/f13-board.css';
+import './styles/f13-polish.css';
+import './styles/f13-home.css';
 import Nav from './components/layout/Nav';
-import Footer from './components/layout/Footer';
-import CRMHero from './components/sections/CRMHero';
-import RiskReversalBanner from './components/sections/RiskReversalBanner';
-import CRMPainPoints from './components/sections/CRMPainPoints';
-import CRMHowItWorks from './components/sections/CRMHowItWorks';
-import GuaranteeSection from './components/sections/GuaranteeSection';
-import AboutTeaser from './components/sections/AboutTeaser';
-import InsightsTeaser from './components/sections/InsightsTeaser';
-import CRMCTA from './components/sections/CRMCTA';
-import About from './pages/About';
-import Insights from './pages/Insights';
-import TheEndOfBrandMarketing from './pages/insights/TheEndOfBrandMarketing';
-import WhyCommunitiesBeatCampaigns from './pages/insights/WhyCommunitiesBeatCampaigns';
-import FounderMediaIsTheNewABM from './pages/insights/FounderMediaIsTheNewABM';
-import SignalInANoisyMarket from './pages/insights/SignalInANoisyMarket';
-import CategoryIntelligenceBrief from './pages/insights/CategoryIntelligenceBrief';
-import NarrativeArchitectureFramework from './pages/insights/NarrativeArchitectureFramework';
-import DistributionMapTemplate from './pages/insights/DistributionMapTemplate';
-import ProcessCheck from './pages/ProcessCheck';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Home from './pages/Home';
+import Requests from './pages/Requests';
+import Brand from './pages/Brand';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { getCalApi } from '@calcom/embed-react';
+import { SHOW_VOTE } from './config';
+import { CAL_NAMESPACE } from './data/site';
+
+// Cal.com popup: any link carrying calProps opens the booking calendar over the page.
+// Brand colours match the site's cobalt button (lighter on Cal's dark background).
+function CalEmbed() {
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi({ namespace: CAL_NAMESPACE });
+      cal('ui', {
+        theme: 'dark',
+        cssVarsPerTheme: { light: { 'cal-brand': '#1A3BC0' }, dark: { 'cal-brand': '#3D63FF' } },
+        hideEventTypeDetails: false,
+        layout: 'month_view'
+      });
+    })();
+  }, []);
+  return null;
+}
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      document.querySelector(hash)?.scrollIntoView();
+      return;
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
   return null;
 }
 
@@ -33,37 +56,18 @@ function App() {
     <Router>
       <>
         <ScrollToTop />
+        <CalEmbed />
         <Nav />
         <Routes>
-          <Route path="/" element={
-            <div>
-              <CRMHero />
-              <RiskReversalBanner />
-              <CRMPainPoints />
-              <CRMHowItWorks />
-              <GuaranteeSection />
-              <section className="teaser-pair">
-                <div className="container">
-                  <div className="teaser-grid">
-                    <AboutTeaser />
-                    <InsightsTeaser />
-                  </div>
-                </div>
-              </section>
-              <CRMCTA />
-              <Footer />
-            </div>
-          } />
-          <Route path="/about" element={<About />} />
-          <Route path="/insights" element={<Insights />} />
-          <Route path="/insights/the-end-of-brand-marketing" element={<TheEndOfBrandMarketing />} />
-          <Route path="/insights/why-communities-beat-campaigns" element={<WhyCommunitiesBeatCampaigns />} />
-          <Route path="/insights/founder-media-is-the-new-abm" element={<FounderMediaIsTheNewABM />} />
-          <Route path="/insights/signal-in-a-noisy-market" element={<SignalInANoisyMarket />} />
-          <Route path="/insights/category-intelligence-brief" element={<CategoryIntelligenceBrief />} />
-          <Route path="/insights/narrative-architecture-framework" element={<NarrativeArchitectureFramework />} />
-          <Route path="/insights/distribution-map-template" element={<DistributionMapTemplate />} />
-          <Route path="/process-check" element={<ProcessCheck />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/brand" element={<Brand />} />
+          <Route path="/requests" element={SHOW_VOTE ? <Requests /> : <Navigate to="/" replace />} />
+          {/* The site is one page now. Old links (systems, about, agencies, pricing, insights...) land on it. */}
+          <Route path="/agencies" element={<Navigate to="/#agencies" replace />} />
+          <Route path="/about" element={<Navigate to="/#founders" replace />} />
+          <Route path="/systems/*" element={<Navigate to="/#systems" replace />} />
+          <Route path="/ugc" element={<Navigate to="/#systems" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </>
     </Router>

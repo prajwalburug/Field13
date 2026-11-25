@@ -49,11 +49,11 @@ const FounderMediaIsTheNewABM = () => {
 
           <p>ABM still has a role. It is effective for closing. It is useful for coordinating multiple stakeholders in a late-stage deal. It is not effective for opening. The companies that combine founder media for demand generation with ABM for deal acceleration will outperform those that rely on either alone.</p>
 
-          <p>This is what FIELD13 RevArc does. We build the infrastructure that turns your thinking into pipeline. Whether it is founder media or CRM architecture, the principle is the same: build the system before you need it.</p>
+          <p>This is what FIELD13 does. We build the infrastructure that turns your thinking into pipeline. Whether it is founder media or CRM architecture, the principle is the same: build the system before you need it.</p>
         </div>
         <div className="article-cta">
-          <p>If your CRM is not producing the trust you need, start with a free Process Check. 30 minutes. 3 fixes guaranteed.</p>
-          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book your free Process Check →</a>
+          <p>If your AI pilots are not reaching production, book a 30-minute call with an engineering lead. We will tell you which system to build first.</p>
+          <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book a discovery call →</a>
         </div>
       </div>
     </article>

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 const AboutTeaser = () => {
   return (
     <Link to="/about" className="teaser-card">
-      <div className="teaser-eyebrow">About RevArc</div>
-      <h3 className="teaser-headline">One person. Every client.</h3>
+      <div className="teaser-eyebrow">About Field13</div>
+      <h3 className="teaser-headline">Senior engineers. Named leads.</h3>
       <p className="teaser-text">
-        RevArc is run by one person, end to end — the same person who maps your process builds it and stays on it. No account managers, no handoff.
+        Prajwal and Subhajit lead every engagement, backed by a team of senior AI, platform and product engineers. We staff to the work, so there is no waitlist and no cap.
       </p>
-      <span className="teaser-cta">Read more about how we work →</span>
+      <span className="teaser-cta">How we work →</span>
     </Link>
   );
 };

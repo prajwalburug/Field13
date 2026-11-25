@@ -116,17 +116,17 @@ const DistributionMapTemplate = () => {
               Every time your founder shows up in a community and adds value, they earn a unit of trust. That trust converts to pipeline eventually. But if you optimize for pipeline, you will optimize away the trust. Show up to contribute. The pipeline is a side effect.
             </p>
             <p>
-              At FIELD13 RevArc, we build full distribution maps: channel matrices, community engagement schedules, newsletter partnerships, and weekly execution plans. Same structured approach, applied to revenue systems.
+              At FIELD13, we build full distribution maps: channel matrices, community engagement schedules, newsletter partnerships, and weekly execution plans. Same structured approach, applied to revenue systems.
             </p>
           </div>
         </div>
       </article>
       <section className="cta-section">
         <div className="container container-narrow">
-          <h2 className="cta-headline">Book your <em>free Process Check</em></h2>
-          <p className="cta-sub">30 minutes. 3 fixes guaranteed. No pitch, no commitment.</p>
+          <h2 className="cta-headline">Book a <em>discovery call</em></h2>
+          <p className="cta-sub">30 minutes with an engineering lead. You leave knowing which system to build first.</p>
           <div className="cta-actions">
-            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book your free Process Check →</a>
+            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book a discovery call →</a>
           </div>
         </div>
       </section>

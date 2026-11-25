@@ -1,41 +1,58 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ThemeToggle from './ThemeToggle';
+import { calProps } from '../../data/site';
+import Logo from '../ui/Logo';
+
+// One page, so the links are anchors. The only action is booking a call.
+const links = [
+  { href: '/#systems', label: 'What we build' },
+  { href: '/#how', label: 'How it works' },
+  { href: '/#run', label: 'Who runs it' },
+  { href: '/#faq', label: 'FAQ' }
+];
 
 const Nav = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
-  const closeMenu = () => setMenuOpen(false);
+  // Stop the page scrolling behind the open mobile menu.
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
 
   return (
-    <nav>
-      <Link to="/" className="nav-logo" onClick={closeMenu}>
-        FIELD13
-      </Link>
-      <div className="nav-right">
-        <a href="https://cal.com/field13-r657gn/45min" className="nav-cta nav-cta-desktop" target="_blank" rel="noopener noreferrer">
-          Book free check
-        </a>
-        <ThemeToggle />
-        <button
-          className={`hamburger ${menuOpen ? 'open' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+    <header className="f13-nav">
+      <div className="f13-nav-inner">
+        <Link to="/" className="f13-logo" onClick={close} aria-label="Field13 home">
+          <Logo />
+        </Link>
+
+        <nav className={`f13-nav-links${open ? ' is-open' : ''}`} aria-label="Main">
+          {links.map((l) => (
+            <a key={l.label} href={l.href} onClick={close}>{l.label}</a>
+          ))}
+          <a {...calProps} className="f13-btn f13-btn-light f13-nav-cta-mobile" onClick={(e) => { calProps.onClick(e); close(); }}>
+            Book a call
+          </a>
+        </nav>
+
+        <div className="f13-nav-right">
+          <a {...calProps} className="f13-btn f13-btn-light f13-btn-sm">
+            Book a call
+          </a>
+          <button
+            type="button"
+            className={`f13-burger${open ? ' is-open' : ''}`}
+            onClick={() => setOpen(!open)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+          >
+            <span /><span />
+          </button>
+        </div>
       </div>
-      <div className={`nav-overlay ${menuOpen ? 'open' : ''}`} onClick={closeMenu}></div>
-      <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        <Link to="/about" className="nav-link" onClick={closeMenu}>About</Link>
-        <Link to="/insights" className="nav-link" onClick={closeMenu}>Insights</Link>
-        <a href="https://cal.com/field13-r657gn/45min" className="nav-cta nav-cta-mobile" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
-          Book free check
-        </a>
-      </div>
-    </nav>
+    </header>
   );
 };
 

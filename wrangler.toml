@@ -1,0 +1,16 @@
+# Cloudflare Pages config for field13.com
+# Static site from `npm run build` (dist/) plus Pages Functions in /functions.
+name = "field13"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-11-01"
+
+# Public, non-secret settings. Secrets (RESEND_API_KEY, TURNSTILE_SECRET, HASH_SALT)
+# are set in the Cloudflare dashboard or with `wrangler pages secret put`.
+[vars]
+NOTIFY_EMAIL = "prajwalburug20501@gmail.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "field13-requests"
+# Replace with the id printed by `npx wrangler d1 create field13-requests`.
+database_id = "e3cd7747-7f6f-464f-83a7-d36bab4ab8ec"

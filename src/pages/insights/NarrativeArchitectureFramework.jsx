@@ -113,17 +113,17 @@ const NarrativeArchitectureFramework = () => {
               A content calendar tells you what to publish. Narrative architecture tells you what to be known for. The first is logistics. The second is strategy. Markets reward strategy.
             </p>
             <p>
-              At FIELD13 RevArc, we build full narrative architecture documents: positioning memo, core opinions, story banks, and message maps. Same structured approach we apply to revenue systems.
+              At FIELD13, we build full narrative architecture documents: positioning memo, core opinions, story banks, and message maps. Same structured approach we apply to revenue systems.
             </p>
           </div>
         </div>
       </article>
       <section className="cta-section">
         <div className="container container-narrow">
-          <h2 className="cta-headline">Book your <em>free Process Check</em></h2>
-          <p className="cta-sub">30 minutes. 3 fixes guaranteed. No pitch, no commitment.</p>
+          <h2 className="cta-headline">Book a <em>discovery call</em></h2>
+          <p className="cta-sub">30 minutes with an engineering lead. You leave knowing which system to build first.</p>
           <div className="cta-actions">
-            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book your free Process Check →</a>
+            <a href="https://cal.com/field13-r657gn/45min" className="btn-primary" target="_blank" rel="noopener noreferrer">Book a discovery call →</a>
           </div>
         </div>
       </section>
