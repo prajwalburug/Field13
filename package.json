@@ -1,7 +1,7 @@
 {
   "name": "field13",
   "version": "1.0.0",
-  "description": "FIELD13 \u2014 AI-native GTM company",
+  "description": "FIELD13 — AI-native GTM company",
   "main": "index.html",
   "scripts": {
     "dev": "vite",
@@ -33,6 +33,7 @@
   "author": "FIELD13",
   "license": "MIT",
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@vitejs/plugin-react": "^6.0.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",

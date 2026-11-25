@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CAL_LINK } from '../../data/site';
+import { CAL_LINK, calProps } from '../../data/site';
 import Logo from '../ui/Logo';
 
 const columns = [
@@ -9,8 +9,8 @@ const columns = [
       { label: 'What we build', href: '/#systems' },
       { label: 'How it works', href: '/#how' },
       { label: 'Who runs it', href: '/#run' },
-      { label: 'What we need', href: '/#need' },
-      { label: 'For agencies', href: '/#agencies' }
+      { label: 'For agencies', href: '/#agencies' },
+      { label: 'FAQ', href: '/#faq' }
     ]
   },
   {
@@ -30,7 +30,7 @@ const Footer = () => {
             <Link to="/" className="f13-logo" aria-label="Field13 home">
               <Logo />
             </Link>
-            <p>AI marketing systems for UGC, content, ads and outbound. Built around your team, in your accounts, owned by you.</p>
+            <p>AI marketing systems for UGC, content, ads and outbound. Built around your team and trained on its work.</p>
           </div>
           {columns.map((c) => (
             <div className="f13-footer-col" key={c.title}>
@@ -39,7 +39,7 @@ const Footer = () => {
                 {c.links.map((l) => (
                   <li key={l.label}>
                     {l.href && <a href={l.href}>{l.label}</a>}
-                    {l.ext && <a href={l.ext} target="_blank" rel="noopener noreferrer">{l.label}</a>}
+                    {l.ext && <a {...calProps}>{l.label}</a>}
                   </li>
                 ))}
               </ul>

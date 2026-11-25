@@ -1,4 +1,4 @@
-import { CAL_LINK } from '../../data/site';
+import { calProps } from '../../data/site';
 import HeroCanvas from '../three/HeroCanvas';
 import AgentTrace from '../ui/AgentTrace';
 
@@ -45,9 +45,9 @@ const Hero = () => {
             Systems for UGC, content, ads and outbound, built around how your team already works and trained on its own work.
           </p>
           <div className="f13-actions">
-            <a href={CAL_LINK} className="f13-btn f13-btn-blue" target="_blank" rel="noopener noreferrer">Book a call</a>
+            <a {...calProps} className="f13-btn f13-btn-blue">Book a call</a>
           </div>
-          <p className="f13-hero-proof">Run by a team that has managed 7-figure Meta ad spend.</p>
+          <p className="f13-hero-proof">Run by a team that has managed 7-figure Meta ad spend.<br />We’ve engineered AI marketing workflows for growth-stage startups.</p>
         </div>
 
         <div className="f13-hero-panel">

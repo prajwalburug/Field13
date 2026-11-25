@@ -18,7 +18,26 @@ import Requests from './pages/Requests';
 import Brand from './pages/Brand';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { getCalApi } from '@calcom/embed-react';
 import { SHOW_VOTE } from './config';
+import { CAL_NAMESPACE } from './data/site';
+
+// Cal.com popup: any link carrying calProps opens the booking calendar over the page.
+// Brand colours match the site's cobalt button (lighter on Cal's dark background).
+function CalEmbed() {
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi({ namespace: CAL_NAMESPACE });
+      cal('ui', {
+        theme: 'dark',
+        cssVarsPerTheme: { light: { 'cal-brand': '#1A3BC0' }, dark: { 'cal-brand': '#3D63FF' } },
+        hideEventTypeDetails: false,
+        layout: 'month_view'
+      });
+    })();
+  }, []);
+  return null;
+}
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -37,6 +56,7 @@ function App() {
     <Router>
       <>
         <ScrollToTop />
+        <CalEmbed />
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />

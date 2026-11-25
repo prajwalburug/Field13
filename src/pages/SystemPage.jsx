@@ -4,7 +4,7 @@ import PageHero from '../components/f13/PageHero';
 import Ugc from '../components/f13/Ugc';
 import FinalCta from '../components/f13/FinalCta';
 import SystemLoop from '../components/f13/SystemLoop';
-import { CAL_LINK } from '../data/site';
+import { calProps } from '../data/site';
 import { getSystem } from '../data/systems';
 
 /* One template for every system page, so the four read as one product family. */
@@ -17,7 +17,7 @@ const SystemPage = () => {
     <>
       <PageHero tag={s.name} eyebrow={s.hero.eyebrow} title={s.hero.title} lede={s.hero.lede}>
         <div className="f13-actions">
-          <a href={CAL_LINK} className="f13-btn f13-btn-blue" target="_blank" rel="noopener noreferrer">Talk to the founders</a>
+          <a {...calProps} className="f13-btn f13-btn-blue">Talk to the founders</a>
           <a href="#ships" className="f13-btn f13-btn-ghost">See what ships</a>
         </div>
       </PageHero>

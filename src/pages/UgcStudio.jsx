@@ -2,7 +2,7 @@ import Footer from '../components/layout/Footer';
 import PageHero from '../components/f13/PageHero';
 import Ugc from '../components/f13/Ugc';
 import FinalCta from '../components/f13/FinalCta';
-import { CAL_LINK } from '../data/site';
+import { calProps } from '../data/site';
 
 const UgcStudio = () => {
   return (
@@ -14,7 +14,7 @@ const UgcStudio = () => {
         lede="An AI UGC pipeline built in your own ad accounts, under your brand. For teams that need creative volume without a creator queue."
       >
         <div className="f13-actions">
-          <a href={CAL_LINK} className="f13-btn f13-btn-blue" target="_blank" rel="noopener noreferrer">Book a discovery call</a>
+          <a {...calProps} className="f13-btn f13-btn-blue">Book a discovery call</a>
           <a href="#ugc-studio" className="f13-btn f13-btn-ghost">See the pipeline</a>
         </div>
       </PageHero>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Turnstile from './Turnstile';
-import { CAL_LINK } from '../../data/site';
+import { calProps } from '../../data/site';
 
 /*
  * The two-way side of the vote: experienced AI marketers and growth leads apply
@@ -111,7 +111,7 @@ const BuildWithUs = () => {
               <span className="bw-done-check" aria-hidden="true">✓</span>
               <h3 className="bw-done-title">Thanks{sentName ? `, ${sentName}` : ''}. Next step is a call.</h3>
               <p>We read every application ourselves. Book a slot now, or we'll email you to set one up.</p>
-              <a href={CAL_LINK} className="f13-btn f13-btn-blue" target="_blank" rel="noopener noreferrer">Book the call</a>
+              <a {...calProps} className="f13-btn f13-btn-blue">Book the call</a>
             </div>
           ) : (
             <form className="bw-form" onSubmit={submit} noValidate>

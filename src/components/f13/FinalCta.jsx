@@ -1,4 +1,4 @@
-import { CAL_LINK } from '../../data/site';
+import { calProps } from '../../data/site';
 
 const FinalCta = () => {
   return (
@@ -12,8 +12,9 @@ const FinalCta = () => {
               A call with Prajwal or Subhajit. We talk through your workflow, show you our systems running, and if it’s a fit you get a plan and a fixed price in writing.
             </p>
             <div className="f13-actions">
-              <a href={CAL_LINK} className="f13-btn f13-btn-light" target="_blank" rel="noopener noreferrer">Book a call</a>
+              <a {...calProps} className="f13-btn f13-btn-light">Book a call</a>
             </div>
+            <p className="hm-final-note">Bring the person who owns the workflow and a few examples of work you like.</p>
           </div>
         </div>
       </div>

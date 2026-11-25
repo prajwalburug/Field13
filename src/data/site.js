@@ -1,4 +1,18 @@
-export const CAL_LINK = 'https://cal.com/field13-r657gn/45min';
+export const CAL_LINK = 'https://cal.com/field13/30min';
+
+// Cal.com popup embed (initialised once in App). Spread onto any booking link:
+// the click opens the calendar over the page; the plain href is the fallback.
+export const CAL_NAMESPACE = '30min';
+export const calProps = {
+  href: CAL_LINK,
+  target: '_blank',
+  rel: 'noopener noreferrer',
+  'data-cal-namespace': CAL_NAMESPACE,
+  'data-cal-link': 'field13/30min',
+  'data-cal-config': JSON.stringify({ layout: 'month_view', theme: 'dark', useSlotsViewOnSmallScreen: 'true' }),
+  // When the popup script is ready, keep the visitor on the page (no extra tab).
+  onClick: (e) => { if (window.Cal?.loaded) e.preventDefault(); }
+};
 
 export const OFFER_NAME = 'AI Growth Systems';
 

@@ -1,7 +1,7 @@
 import Footer from '../components/layout/Footer';
 import PageHero from '../components/f13/PageHero';
 import FinalCta from '../components/f13/FinalCta';
-import { CAL_LINK } from '../data/site';
+import { calProps } from '../data/site';
 
 const options = [
   {
@@ -65,7 +65,7 @@ const Agencies = () => {
         lede="Give your clients AI systems without hiring anyone to build them. Run them under your brand, bring us in as your AI partner, or refer a client. We build and run the systems either way."
       >
         <div className="f13-actions">
-          <a href={CAL_LINK} className="f13-btn f13-btn-blue" target="_blank" rel="noopener noreferrer">Book a partner call</a>
+          <a {...calProps} className="f13-btn f13-btn-blue">Book a partner call</a>
           <a href="#options" className="f13-btn f13-btn-ghost">See the three options</a>
         </div>
       </PageHero>
@@ -90,7 +90,7 @@ const Agencies = () => {
                 </ol>
                 <div className="f13-option-foot">
                   <span>{o.foot}</span>
-                  <a href={CAL_LINK} className="f13-btn f13-btn-blue f13-btn-sm" target="_blank" rel="noopener noreferrer">Talk to us</a>
+                  <a {...calProps} className="f13-btn f13-btn-blue f13-btn-sm">Talk to us</a>
                 </div>
               </article>
             ))}

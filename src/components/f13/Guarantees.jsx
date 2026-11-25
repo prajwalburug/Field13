@@ -1,7 +1,8 @@
 /*
  * Risk reversal, built so trying Field13 is a no-brainer: start with one small part,
  * pay the rest of the build only when it passes the agreed checks and is handed over,
- * pay to run it only once it's live, and own everything so leaving is never a trap.
+ * pay to run it only once it's live, and keep your data and everything it made, so leaving is never a trap.
+ * The system itself (workflows, prompts, code) is Field13's and is never promised as the client's.
  * Never promise free work: no "free month", no "we keep working at our cost".
  * No prices and no go-live dates: timelines depend on data access and client decisions.
  */
@@ -12,14 +13,14 @@ const items = [
     promise:
       'No need to sign up for a whole system. Start with one part of one, like hooks and scripts or publishing, on your own brand and accounts. See it work before you add more.',
     penaltyLabel: 'If it isn’t for you',
-    penalty: 'Stop there. You keep what was built and owe nothing more.'
+    penalty: 'Stop there. You keep everything it made and owe nothing more.'
   },
   {
     n: '02',
-    name: 'Handed over, or you don’t pay',
+    name: 'It passes, or you don’t pay',
     promise:
-      'Before we start, we write down with you what the system must do: what it makes, how good it has to be and where it runs. The build is done when it passes and is handed over to you.',
-    penaltyLabel: 'Until it’s handed over',
+      'Before we start, we write down with you what the system must do: what it makes, how good it has to be and where it runs. The build is done when it passes those checks and is live for your team.',
+    penaltyLabel: 'Until it passes',
     penalty: 'You don’t pay the rest of the build.'
   },
   {
@@ -32,11 +33,11 @@ const items = [
   },
   {
     n: '04',
-    name: 'You own everything',
+    name: 'Your work and data stay yours',
     promise:
-      'Prompts, workflows, footage, data and dashboards live in your accounts, not ours. Nothing runs on our side that you cannot take with you.',
-    penaltyLabel: 'If you leave or go in-house',
-    penalty: 'You keep all of it, with a full handover and runbooks so your team can run it.'
+      'Your accounts, your data and everything the system makes, from ads and posts to videos and reports, belong to you.',
+    penaltyLabel: 'If you leave',
+    penalty: 'You keep all your work and data. Nothing you made is locked away.'
   }
 ];
 
@@ -53,7 +54,7 @@ const Guarantees = () => {
             </h2>
           </div>
           <p className="f13-lede f13-gx-lede">
-            Four promises, written into your contract. Trying us is low risk, and the system stays yours whatever happens.
+            Four promises, written into your contract. Trying us is low risk, and your work and data stay yours whatever happens.
           </p>
         </div>
 

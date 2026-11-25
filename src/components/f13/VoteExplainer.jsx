@@ -1,4 +1,4 @@
-import { CAL_LINK } from '../../data/site';
+import { calProps } from '../../data/site';
 
 /*
  * Explains the public vote: how it works, what a voter gets, and why we run it.
@@ -120,7 +120,7 @@ const VoteExplainer = () => (
         <div className="vx-faq-side">
           <div className="f13-label">Questions</div>
           <h3 className="vx-faq-title">What people ask <em>before they vote.</em></h3>
-          <p className="vx-faq-more">Something else on your mind? <a href={CAL_LINK} className="f13-textlink" target="_blank" rel="noopener noreferrer">Ask us on a call →</a></p>
+          <p className="vx-faq-more">Something else on your mind? <a {...calProps} className="f13-textlink">Ask us on a call →</a></p>
         </div>
         <div className="vx-faq-list">
           {faq.map((f) => (

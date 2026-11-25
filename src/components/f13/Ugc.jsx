@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { CAL_LINK } from '../../data/site';
+import { calProps } from '../../data/site';
 
 const pipeline = [
   { name: 'Trend pull', body: 'Top videos, transcripts and the ads brands are scaling in your niche.' },
@@ -88,7 +88,7 @@ const Ugc = () => {
           </p>
 
           <div className="f13-actions">
-            <a href={CAL_LINK} className="f13-btn f13-btn-blue" target="_blank" rel="noopener noreferrer">Build your UGC studio</a>
+            <a {...calProps} className="f13-btn f13-btn-blue">Build your UGC studio</a>
           </div>
         </div>
       </div>

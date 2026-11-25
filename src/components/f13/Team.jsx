@@ -2,13 +2,12 @@ const founders = [
   {
     name: 'Prajwal',
     role: 'Founder',
-    title: 'Builds the creative engines',
-    subtitle: 'Hooks, UGC, edits and testing, wired into one system',
+    title: 'Builds the systems',
     photo: '/media/prajwal.jpg',
     alt: 'Portrait of Prajwal against a blue background',
-    lead: 'Turns what your creators and editors make into a steady flow of tested ads, so the team spends its time on the work only it can do.',
+    lead: 'Engineer by background. Designs each system around how your team works, builds it in your accounts and trains it with your people.',
     points: [
-      { text: 'Finalist, AI Marketing Kombat (Season 1)', note: 'A UK competition where marketers solve brand briefs with AI, judged round by round. His final entry: a creative-performance dashboard whose AI summary checks every number it writes.' }
+      { text: 'Finalist, AI Marketing Kombat (Season 1)', note: 'A UK competition where marketers solve brand briefs with AI. Final entry: a creative-performance dashboard whose AI summary checks every number it writes.' }
     ]
   },
   {
@@ -17,9 +16,10 @@ const founders = [
     title: 'Runs paid acquisition and funnels',
     photo: '/media/subhajit.jpg',
     alt: 'Subhajit Dutta speaking at a desk during an event',
-    lead: 'Knows which creative pays back and which only collects likes, because the spend was his to answer for.',
+    lead: 'In performance marketing since 2018. Builds what sits behind the ads: landing pages, Meta campaigns, WhatsApp and email follow-up. Knows which creative pays back, because the spend was his to answer for.',
     points: [
       { text: '7-figure Meta ad spend managed since 2023' },
+      { text: '15,000+ leads generated for clients' },
       { text: 'FlexiFunnels Achievers Award' }
     ]
   }

@@ -8,7 +8,7 @@ import Footer from '../components/layout/Footer';
  * The whole site is this one page, with one action: book a call.
  * Positioning: Field13 builds AI marketing systems (not a UGC agency). Each system
  * is made of smaller parts, built around the team's own workflow and trained on
- * its work. It can be run by the client's team (done with you) or by ours (done for you).
+ * its work. It is run by the client's team, with us (done with you).
  * Copy rules: no prices, no delivery durations, nothing the buyer can't check.
  */
 
@@ -42,31 +42,21 @@ const runModes = [
       ['We keep it working.', 'Monitored, fixed and improved by us.'],
       ['It grows with you.', 'New parts added when your team needs them.']
     ]
-  },
-  {
-    chip: 'Done for you',
-    title: 'Our people run it',
-    lede: 'Short on hands? Our own editors, strategists and operators run the system for you, every day. You approve, they deliver.',
-    steps: [
-      ['Our team runs it daily.', 'Trained on your brand and your system.'],
-      ['You approve everything.', 'Nothing goes live without your yes.'],
-      ['You see what shipped.', 'A report every month, from your own accounts.']
-    ]
   }
 ];
 
-const needs = [
-  'One owner for each workflow: someone who knows how it is done today.',
-  'Access to the tools and accounts the system will run in.',
-  'Examples of work you like: past ads, posts, brand guides, so we can train on it.',
-  'Time for a few feedback rounds while we train it.'
+const agencyRoutes = [
+  { name: 'Under your brand', body: 'You offer the system under your own brand. We build it and keep it working in the background.' },
+  { name: 'As your named partner', body: 'You bring us in as your AI partner, by name, alongside your team.' },
+  { name: 'By referral', body: 'You introduce a client who needs it. We take it from there.' }
 ];
 
 const faq = [
-  { q: 'Is this an agency or software?', a: 'Neither, exactly. We build a system for your team, in your accounts. Your team can run it, or our people can run it for you.' },
+  { q: 'Is this an agency or software?', a: 'Neither, exactly. We build a system for your team, in your accounts. Your team runs it, and we keep it working.' },
   { q: 'Does it replace our team?', a: 'No. It takes the repetitive steps, so your creative director, strategists, editors and marketers spend their time on the work that needs them.' },
   { q: 'Which tools does it run on?', a: 'What you already use wherever possible: your ad accounts, social accounts, CRM and storage. We map it with you on the call.' },
-  { q: 'Who owns it?', a: 'You do. Prompts, workflows, assets, data and dashboards live in your accounts and stay there if you leave.' },
+  { q: 'Who owns it?', a: 'You own your accounts, your data and everything the system makes: the ads, posts, videos and reports. The system itself, its workflows, prompts and code, is ours, and your team uses it while we work together. If you leave, you keep all your work and data.' },
+  { q: 'What do you need from our team?', a: 'Less than you might think: one person who knows how the workflow is done today, access to the tools and accounts it will run in, examples of work you like (past ads, posts, brand guides) so we can train on them, and time for a few feedback rounds while we do.' },
   { q: 'Is AI content allowed on Meta and TikTok?', a: 'Yes. Both platforms require AI-generated content to be labelled, and we label every ad.' },
   { q: 'What happens on the call?', a: 'We talk through how your team works and what you want to move, show you the systems we have built running, and say which one we would start with. If it is a fit, you get a plan and a fixed price in writing.' }
 ];
@@ -146,11 +136,11 @@ const Home = () => (
         <div className="sp-head">
           <div>
             <div className="f13-label">Who runs it</div>
-            <h2 className="f13-h2">Your team runs it, <em>or ours does.</em></h2>
+            <h2 className="f13-h2">Your team runs it. <em>We keep it working.</em></h2>
           </div>
-          <p className="f13-lede">Same system either way. Choose for each system, and switch later if you need to.</p>
+          <p className="f13-lede">We build it with your people, train them on it, and stay on to monitor, fix and improve it.</p>
         </div>
-        <div className="f13-options">
+        <div className="f13-options f13-options-1">
           {runModes.map((o) => (
             <article className="f13-option" key={o.chip}>
               <span className="f13-chip">{o.chip}</span>
@@ -167,31 +157,25 @@ const Home = () => (
       </div>
     </section>
 
-    <section className="f13-sheet f13-sheet-black" id="need">
-      <div className="f13-wrap">
-        <div className="sp-check-grid">
-          <div>
-            <div className="f13-label">What we need from you</div>
-            <h2 className="f13-h2">Four things <em>to get started.</em></h2>
-            <p className="f13-lede">Everything we build lives in your accounts, so it stays yours.</p>
-          </div>
-          <ul className="sp-checks">
-            {needs.map((n) => <li key={n}>{n}</li>)}
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <Guarantees />
     <Team />
 
     <section className="f13-sheet f13-sheet-black hm-agencies" id="agencies">
-      <div className="f13-wrap f13-split-head">
-        <div>
+      <div className="f13-wrap">
+        <div className="hm-agencies-head">
           <div className="f13-label">For agencies</div>
           <h2 className="f13-h2">Run an agency? <em>Offer this to your clients.</em></h2>
+          <p className="f13-lede">Three ways to work with us. We walk you through each one on the call.</p>
         </div>
-        <p className="f13-lede">Under your own brand, with us as your named AI partner, or by referring a client. We will walk you through it on the call.</p>
+        <div className="f13-cards hm-cards-3">
+          {agencyRoutes.map((r, i) => (
+            <div className="f13-card" key={r.name}>
+              <span className="f13-card-n">0{i + 1}</span>
+              <h3 className="f13-h3">{r.name}</h3>
+              <p>{r.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
