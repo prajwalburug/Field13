@@ -42,7 +42,8 @@ const Hero = () => {
             We build <em>AI marketing systems.</em>
           </h1>
           <p className="f13-lede f13-hero-lede">
-            Systems for UGC, content, ads and outbound, built around how your team already works and trained on its own work.
+            <span className="hm-only-wide">Systems for UGC, content, ads and outbound, built around how your team already works and trained on its own work.</span>
+            <span className="hm-only-phone">For UGC, content, ads and outbound. Built around your team.</span>
           </p>
           <div className="f13-actions">
             <a {...calProps} className="f13-btn f13-btn-blue">See the system we’d build</a>

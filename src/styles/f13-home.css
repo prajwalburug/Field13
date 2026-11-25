@@ -42,8 +42,9 @@
 .f13-hero-badge { padding: 0; border: 0; background: none; }
 .f13-hero-badge .f13-badge-tag { height: 22px; padding: 0 9px; font-size: 9.5px; }
 @media (max-width: 640px) {
-  .f13-hero-title { font-size: 44px; }
-  .f13-hero-title em { white-space: normal; }
+  /* Phones: three deliberate, centred lines - "We build" / "AI marketing" / "systems." */
+  .f13-hero-title { font-size: clamp(50px, 15.5vw, 66px); line-height: 1; letter-spacing: -0.035em; text-wrap: wrap; }
+  .f13-hero-title em { display: block; white-space: normal; max-width: 6.2em; margin: 0 auto; padding-right: 0.06em; }
 }
 
 /* Final CTA: one line on what to bring */
@@ -86,3 +87,10 @@
 .f13-cta-note { margin-top: 0.85rem; max-width: 26rem; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.62); }
 .f13-hero-copy .f13-cta-note { margin-left: auto; margin-right: auto; }
 .f13-team-lede { margin-top: 1rem; max-width: 36rem; }
+
+/* Hero lede: full line on wide screens, short line on phones */
+.hm-only-phone { display: none; }
+@media (max-width: 640px) {
+  .hm-only-wide { display: none; }
+  .hm-only-phone { display: inline; }
+}
