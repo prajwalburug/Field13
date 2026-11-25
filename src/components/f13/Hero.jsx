@@ -48,7 +48,6 @@ const Hero = () => {
             <a {...calProps} className="f13-btn f13-btn-blue">See the system we’d build</a>
           </div>
           <p className="f13-cta-note">A 30-min call with Prajwal or Subhajit. Walk us through how your team makes ads and content today.</p>
-          <p className="f13-hero-proof">Run by a team that has managed 7-figure Meta ad spend.<br />We’ve engineered AI marketing workflows for growth-stage startups.</p>
         </div>
 
         <div className="f13-hero-panel">

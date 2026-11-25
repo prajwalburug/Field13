@@ -32,6 +32,7 @@ const Team = () => {
         <div className="f13-team-head">
           <div className="f13-label">Founders</div>
           <h2 className="f13-h2">Who we are</h2>
+          <p className="f13-lede f13-team-lede">We’ve managed 7-figure Meta ad spend and engineered AI marketing workflows for growth-stage startups.</p>
         </div>
 
         <div className="f13-team-grid">
